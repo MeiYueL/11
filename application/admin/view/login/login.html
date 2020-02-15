@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body>
+<div class="page-wrapper flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-4">
+                    <div class="card-header text-center text-uppercase h4 font-weight-light">
+
+                    <p id="err_msg">登录</p>
+                    </div>
+
+<form method="post" action="login.html">
+                    <div class="card-body py-5">
+                        <div class="form-group">
+                            <label class="form-control-label">账号</label>
+                            <input type="text" class="form-control" id="inputLoginLogin" name="inputLoginLogin" required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">密码</label>
+        <input type="password" id="inputLoginPassword" name="inputLoginPassword" class="form-control" required="true">
+
+                        </div>
+
+                        <div class="custom-control custom-checkbox mt-4">
+                            <input type="checkbox" class="custom-control-input" id="login">
+                            <label class="custom-control-label" for="login">记住账号</label>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-6">
+          <input type="button" value="登录" class="btn btn-primary px-5" id="login_btn">
+                            </div>
+
+                            <div class="col-6">
+                                <a href="#" class="btn btn-link">忘记密码？</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript">
+    $(function () 
+    {
+        $('#login_btn').click(function()
+        {
+           // alert('asddbsb');
+            var username = $('#inputLoginLogin').val();
+            var password = $('#inputLoginPassword').val();
+            var sort = 'asd';
+        //    alert(password);
+            $.post("{:url('admin/login/login')}",{'user_name':username, 'password':password},function(data)
+            {
+                if(data.code!=1){
+                    $('#err_msg').show().html("<span style='color:red'>"+data.msg+"</span>");
+                    return;
+                }
+                else
+                {
+                    window.location.href=data.data;
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

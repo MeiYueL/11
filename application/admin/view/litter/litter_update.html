@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改垃圾信息</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                修改垃圾信息
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row mb-5">
+                                    
+
+                                      <form method="post"  action="{:Url('admin/litter/litter_updatecheck')}">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">垃圾名称：</label>
+                                                    <input class="form-control"value=" {$litter['litter_name']}" name="littername">
+
+                                                <input type="hidden"   name="id" value="{$litter['litter_id']}">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">一级分类：</label>
+<select name="type1" size="1" id="type" style="width: 100px;">
+     {foreach name='litterclass' item='v'}
+
+     {if condition="($v['litter_class_pid']==$litter['one_class_id'])"}
+
+         <option value="{$v['litter_class_pid']}" selected>{$v.litter_class_name1}</option>
+         {else/}
+ <option value="{$v['litter_class_pid']}" >{$v.litter_class_name1}</option>
+        {/if}
+     {/foreach}
+
+
+
+ </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">二级分类：</label>
+ <select name="lables" size="1" id="lables" style="width: 100px;">
+
+     {foreach name='littetwo' item='v'}
+
+     {if condition="($v['litter_class_id']==$litter['two_class_id'])"}
+
+         <option value="{$v['litter_class_pid']}" selected>{$v.litter_class_name}</option>
+         {else/}
+ <option value="{$v['litter_class_pid']}" >{$v.litter_class_name}</option>
+        {/if}
+     {/foreach}
+
+ </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script "text/javascript">
+
+  $('#type').click(function(){
+            $(this).change(function(){
+                var objectModel = {};
+                var   value = $(this).val();
+           //     alert(value);
+               var   type = $(this).attr('id');
+              // alert(type);
+              //  objectModel[type] =value;
+                $.ajax({
+              //      cache:false,
+                    type:"POST",
+                    url:'litter_add',
+                    dataType:"json",
+                    data:{"value":value
+                    },
+                    timeout:30000,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    },
+                    success:function(data)
+                    {
+                        //alert('12');
+                    //  alert(data[0]);
+                    //
+                    //  alert(data[1]);
+                        $("#lables").empty();
+                        var count = data.length;
+                        var i = 0;
+                        var b="";
+                           for(i=0;i<count;i++)
+                           {
+                               b+="<option value="+data[i].litter_class_id+">"+data[i].litter_class_name+"</option>";
+                           }
+                        $("#lables").append(b);
+
+                         
+                    }
+                });
+               });
+        }
+    );
+
+</script>
+</body>
+</html>

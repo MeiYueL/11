@@ -1,0 +1,65 @@
+<div class="row">
+                <div class="col-md-6" style="flex:0 0 100%;max-width: 100%;">
+                    <div class="card">
+                        <div class="card-header bg-light" style="">
+                            所有订单
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" >
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2">商品信息</td>
+                                        <td>单价</td>
+                                        <td>数量</td>
+                                        <td>合计</td>
+                                        <td>状态</td>
+                                        <td>操作</td>
+                                    </tr>
+                                       {foreach name="order" item="data1"}
+                                    <tr style="text-align:left;background-color: lightgray;">
+                                        <th style="width: 205px;">{$data1['create_time']}</th>
+                                        <th style="width: 300px;">订单号：{$data1['order_core']}</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>
+  {if condition="($data1['order_status']=='待付款')"}
+                           <a  class="btn btn-outline-info"  href="{:Url('index/index/paypay',['id' => $data1['order_id']])}" >付款</a>
+
+        {/if}
+
+
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                        {foreach name='detail' item='v'}
+                       {if condition="($v['order_id']==$data1['order_id'])"}
+                                    <tr>
+                                        <td>
+                                                    
+                                            <div>
+                                                <img src="__PIC__{$v['product_pic_url']}" width="200" alt="">
+                                            </div><!-- /.image -->
+                                        </td>
+                                        <td>{$v.product_name}</td>
+                                        <td><b>{$v.product_price}</b></td>
+                                        <td>{$v.product_amount}</td>
+                                        <td><font color="red">￥{$v.product_price*$v.product_amount}</font></td>
+                                        <td><a href="">{$v.product_amount}</a></td>
+                                        <td><a href="">{$v.order_status}</a></td>
+                                    </tr>
+                   {/if}
+                    {/foreach}
+    
+                                    </tbody>
+                                    {/foreach}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

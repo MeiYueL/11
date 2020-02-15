@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>购物车</title>
+    <style>
+        table{
+            width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid silver;
+            line-height: 40px;
+            text-align: center;
+        }
+        .btnl,.btnr{
+            border-style: none;
+            outline: none;
+            color: deeppink;
+        }
+        .txt{
+            width: 30px;
+            height: 30px;
+            border-style: none;
+            outline: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            
+            {include file="index@header" /}
+
+            <!-- CONTENT -->
+            <div id="content">
+<div class="container" style="width: 1000px;">
+
+    <div id="main">
+        <div class="row">
+            <div class="span9" style="width: 100%;">
+                <div style="float: left;width:50%;"><h1 class="page-header">购物车</h1></div>
+                <div style="float: left;width:50%; text-align: right;margin-top: 20px;">
+                    <a href="/contact-us" class="btn btn-primary" style="height: 30px;width: 150px;font-size: 20px; background-color: white;"><font color="grey">总计：<span class="totle">0</span>￥</span></a>
+                    <form method="post" action="{:Url('index/maint/cart_submit')}">
+                        <button type="submit" class="btn btn-primary" >结算</button>
+                </div>
+              <div class="properties-rows" style="width: 100%;">
+    <div class="row" style="width: 100%;">
+        <div class="property span9" style="width: 100%;">
+            <div class="row">
+                <div class="image span3" style="width:auto;">
+                    <div class="content" style="text-align: left;">
+                        <a href="../maint/goods_detail.html"></a>
+                        
+                    </div><!-- /.content -->
+                </div><!-- /.image -->
+                <div class="body span6" style="width:1000px;">
+                    <div class="title-price row">
+                        <table  width=100% style="width:100%;text-align:center;">
+                        
+                            <thead>
+                                <tr>
+                                    <th>选择</th>
+                                    <th>图片</th>
+                                    <th>商品信息</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>金额</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody style="font-size: 15px;">
+                                {foreach name="cart" item="data1" key="k"}
+
+    <tr class="trinfo">
+        <td>
+<input class="ckbox"type="checkbox" name="teachers[]" value={$data1['cart_id']} id={$data1['cart_id']} /> 
+</td>
+<td width=25% height=200><img style="width:800px;height:200px;" src="__PIC__{$data1['product_pic_url']}" width="200" alt=""></td>
+        <td>{$data1['product_name']}</td>
+        <td><span class="price">{$data1['product_price']}</span>￥</td>
+        <td><button class="btnl" type="button">-</button><input type="text" class="txt" value="{$data1['product_amount']}"/><button class="btnr" type="button">+</button></td>
+        <td><span class="smallprice">{$data1['product_amount']*$data1['product_price']}</span>￥</td>
+        <td> <a  class="btn btn-outline-info"  href="{:Url('index/maint/cart_delete',['id' => $data1['cart_id']])}" >删除</a></td>
+    </tr>
+
+
+                               
+                                    {/foreach}
+
+
+                            </tbody>
+
+
+                            </form>
+
+
+
+
+
+
+                        </table>
+                    </div><!-- /.title -->
+                </div><!-- /.body -->
+            </div><!-- /.property -->
+        </div><!-- /.row -->
+    </div><!-- /.row -->
+</div><!-- /.properties-rows -->
+     </div>
+        </div>
+    </div>
+</div>
+
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script>
+    //获取左右的按钮集合
+    var btnleft=document.getElementsByClassName("btnl");
+    var btnright=document.getElementsByClassName("btnr");
+    //获取表示数量的class名为txt的input元素集合
+    var txt=document.getElementsByClassName("txt");
+    //获取表示单价的class名为price的span元素集合
+    var price=document.getElementsByClassName("price");
+    //获取表示小计的class名为smallprice的span元素集合
+    var small=document.getElementsByClassName("smallprice");
+    //获取表示总价的class名为totle的span元素
+    var totle=document.getElementsByClassName("totle")[0];
+    //获取全选反选按钮和选择框
+    var btna=document.getElementById("btna");
+    var btnf=document.getElementById("btnf");
+    var box=document.getElementsByClassName("ckbox");
+    //获取删除按钮
+    var btndelete=document.getElementsByClassName("btndelete");
+    var trlist=document.getElementsByClassName("trinfo");
+ 
+    var totleprice=0;   //定义全局变量totleprice的初值为0
+    //给数量左右两边的+-添加点击事件
+    for(var i=0;i<btnleft.length;i++)
+    {
+        btnleft[i].index=i;    //把i的值赋给btnleft[i]的index
+        btnleft[i].onclick=function (){
+            //获取当前对应的文本框的值
+            var val=txt[this.index].value;
+            val--;
+            //控制其数量的值不能小于1
+            if(val<=1)
+            {
+                val=1;
+            }
+            txt[this.index].value=val;  //把更新了的val值再赋给txt[this.index].value
+            addprice(this.index);    //调用一下addprice()使其在当前变化下执行
+        }
+        btnright[i].index=i;    //把i的值赋给btnright[i]的index
+        btnright[i].onclick=function (){
+            var val=txt[this.index].value;
+            val++;
+            txt[this.index].value=val;
+            addprice(this.index);
+        }
+        //给checkbox添加点击事件
+        box[i].onclick=function (){
+            showtotleprice();
+        }
+        //给删除添加点击事件
+        btndelete[i].index=i;
+        btndelete[i].onclick=function (){
+            totleprice-=parseFloat(small[this.index].innerText);    //将总计里面对应的价格也减掉
+            totle.innerText=totleprice;
+            trlist[this.index].remove();     //去掉对应的那一行元素
+            //重新更新索引  防止其他操作出错
+            for(var k=0;k<trlist.length;k++)
+            {
+                trlist[k].index=k;
+                btndelete[k].index=k;
+                btnleft[k].index=k;
+                btnright[k].index=k;
+            }
+        }
+    }
+    //计算小计
+    function addprice(index){
+        small[index].innerText=(price[index].innerText*txt[index].value);
+    }
+    //计算总计
+    function showtotleprice(){
+        totleprice=0;
+        for(var i=0;i<small.length;i++)
+        {
+            if(box[i].checked)
+            {
+                totleprice+=parseFloat(small[i].innerText);
+            }
+        }
+        totle.innerText=totleprice;
+    }
+    //全选
+    btna.onclick=function (){
+        for(var i=0;i<box.length;i++)
+        {
+            box[i].checked=true;
+        }
+        showtotleprice();
+    }
+    //反选
+    btnf.onclick=function (){
+        for(var i=0;i<box.length;i++)
+        {
+            box[i].checked=!box[i].checked;
+        }
+        showtotleprice();
+    }
+</script>
+</body>
+</html>

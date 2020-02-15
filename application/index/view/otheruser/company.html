@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="index@header_person" /}    
+
+    <div class="main-container">
+        {include file="index@left_person" /}
+
+        <div class="content">
+                        <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                个人账户设置
+                            </div>
+<form method="post"  enctype="multipart/form-data" action="{:Url('index/otheruser/person_setpic')}">
+                            <div class="card-body">
+                                <div class="row mb-5">
+                                    <div class="col-md-4 mb-4">
+                                        <div>公司LOGO</div>
+                                    </div>
+
+                                    <div class="col-md-8">
+
+                                      公司头像：<input type="file" name="image_url" /> <br><br>
+                                        <img src="__PIC__{$company['company_logo']}" class="img" width="300">
+
+
+
+                                                    <img src="">
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                                <hr>
+
+                                <div class="row mb-5">
+                                    <div class="col-md-4 mb-4">
+                                        <div>基本资料</div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">联系人姓名：</label>
+                                                    <input class="form-control" value="{$company['company_name']}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">联系人联系方式：</label>
+                                                    <input class="form-control"
+                                                    value="{$company['company_contact_tel']}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">联系人性别：</label>
+  {if condition="($company['company_contact_sex']=='男')"}
+                                                    <input type="radio" value="男" name="sex" checked>男
+                                                    <input type="radio" value="女" name="sex">女
+{else/}
+                                                    <input type="radio" value="男" name="sex">男
+                                                    <input type="radio" value="女" name="sex"checked>女
+        {/if}              
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+   <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                    <label class="form-control-label">机构地址(详细地址)</label>
+                                                    <input class="form-control" value="{$company['company_address']}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script "text/javascript">
+
+  $('#type').click(function(){
+            $(this).change(function(){
+                var objectModel = {};
+                var   value = $(this).val();
+              //  alert(value);
+               var   type = $(this).attr('id');
+              // alert(type);
+              //  objectModel[type] =value;
+                $.ajax({
+              //      cache:false,
+                    type:"POST",
+                    url:'company',
+                    dataType:"json",
+                    data:{"value":value
+                    },
+                    timeout:30000,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    },
+                    success:function(data)
+                    {
+                        //alert('12');
+                    //  alert(data[0]);
+                    //
+                    //  alert(data[1]);
+                        $("#lables").empty();
+                        var count = data.length;
+                        var i = 0;
+                        var b="";
+                           for(i=0;i<count;i++)
+                           {
+                               b+="<option value="+data[i].id+">"+data[i].name+"</option>";
+                           }
+                        $("#lables").append(b);
+
+                         
+                    }
+                });
+               });
+        }
+    );
+
+   $('#lables').click(function()
+   {
+            $(this).change(function()
+            {
+
+                var   value = $(this).val();
+                      $("#lables2").empty();
+                    var b="";
+                    var c="";
+                     b="<option value="+'0'+">"+'无'+"</option>";
+                     $("#lables2").append(b);
+
+                    c=$("#type  option:selected").text();
+                     //   var a=document.getElementById("type1").value;
+                    //  alert(c);
+              /*  if(value=='110000')
+                {
+              //   $("#lables2").empty();
+                    var b="";
+                     b="<option value="+'0'+">"+'无'+"</option>";
+                     $("#lables2").append(b);
+                 }*/
+
+                //alert(value);
+            //   var   type = $(this).attr('id');
+           //    alert(type);
+              //  objectModel[type] =value;
+                
+                $.ajax({
+              //      cache:false,
+                    type:"POST",
+                    url:'kankan1',
+                    dataType:"json",
+                    data:{"value":value
+                    },
+                    timeout:30000,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    },
+                    success:function(data)
+                    {
+                        //if(data[0]!='undefined')
+                        //{
+                        if(c!='北京市' &&  c!='天津市'  &&  c!='内蒙古自治区'  &&  c!='上海市')
+                        {
+                        $("#lables2").empty();
+                        var count = data.length;
+                        var i = 0;
+                        var b="";
+                           for(i=0;i<count;i++)
+                           {
+                               b+="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+                           }
+                        $("#lables2").append(b);
+                        }
+                    //  }
+                    }
+                });
+               });
+        }
+    );
+</script>
+<script type="text/javascript">
+    $("input[name='image_url']").change(function(){
+        $(".img").attr("src",URL.createObjectURL($(this)[0].files[0]));
+    });
+</script>
+</body>
+</html>

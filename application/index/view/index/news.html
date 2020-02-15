@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>资讯</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            
+            {include file="index@header" /}
+
+            <!-- CONTENT -->
+            <div id="content">
+<div class="container">
+
+    <div id="main">
+        <div class="row">
+            <div class="span9">
+                <h1 class="page-header">
+
+     {if condition="($id=='1')"}
+
+         政策新闻
+         {else/}
+热点新闻
+        {/if}
+                </h1>
+
+                <div class="properties-rows">
+
+    <form action="{:url('index/index/news1')}" method="post" class="form-horizontal" name="myform">
+
+
+
+    </form>
+
+</div><!-- /.properties-rows -->                <div class="properties-rows">
+    <div class="row">
+
+
+    {foreach name="news" item="data1"}
+        <div class="property span9">
+            <div class="row">
+                <div class="image span3">
+                    <div class="content">
+                        <a href="{:Url('index/maint/news_detail',['id' => $data1['article_id']])}"></a>
+                        <img src="__PIC__{$data1['article_pic_url']}" style="height:250px;width: 250px; " alt="">
+                    </div><!-- /.content -->
+                </div><!-- /.image -->
+
+                <div class="body span6">
+                    <div class="title-price row">
+                        <div class="title span4">
+                            <h2><a href="../maint/news_detail.html">{$data1['article_name']}</a></h2>
+                        </div><!-- /.title -->
+
+                        <div class="price">
+                            {$data1['article_time']}
+                        </div><!-- /.price -->
+                    </div><!-- /.title -->
+
+                    <div class="location">{$data1['article_content']|mb_substr=0,20,'utf-8'}……</div><!-- /.location -->
+                    <p>{$data1['article_time']}</p>
+                    <div class="area">
+                        <span class="key">浏览量:</span><!-- /.key -->
+                        <span class="value">{$data1['article_click']}</span><!-- /.value -->
+                    </div><!-- /.area -->
+                </div><!-- /.body -->
+            </div><!-- /.property -->
+        </div><!-- /.row -->
+    {/foreach}
+
+
+    </div><!-- /.row -->
+</div><!-- /.properties-rows -->
+                <div class="pagination pagination-centered">
+{$news->render()}
+</div><!-- /.pagination -->            </div>
+            <div class="sidebar span3">
+                <div class="widget our-agents">
+    <div class="title">
+        <h2>联系我们</h2>
+    </div><!-- /.title -->
+
+    <div class="content">
+        <div class="agent">
+            <div class="image">
+                <img src="__IMG__/photos/ori-small.jpg" alt="">
+            </div><!-- /.image -->
+            <div class="name">Ori</div><!-- /.name -->
+            <div class="phone">333-666-777</div><!-- /.phone -->
+            <div class="email"><a href="#">@163.com</a></div><!-- /.email -->
+        </div><!-- /.agent -->
+
+        <div class="agent">
+            <div class="image">
+                <img src="__IMG__/photos/rob-small.jpg" alt="">
+            </div><!-- /.image -->
+            <div class="name">Rob</div><!-- /.name -->
+            <div class="phone">111-222-333</div><!-- /.phone -->
+            <div class="email"><a href="">@163.com</a></div><!-- /.email -->
+        </div><!-- /.agent -->
+    </div><!-- /.content -->
+</div><!-- /.our-agents -->
+<div class="ad widget">
+    <h2>广告</h2>
+    <div class="content">
+        <a href="#"><img src="__IMG__/banner/1.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/2.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/3.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/4.jpg" alt="Banner"></a>
+    </div><!-- /.content -->
+</div><!-- /.ad -->
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script >
+function selOption(){
+   // alert('1212');
+document.forms["myform"].submit();
+}
+</script>
+</body>
+</html>

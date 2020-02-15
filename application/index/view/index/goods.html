@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>商城</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content">
+<div class="container">
+
+    <div id="main">
+        <div class="row">
+            <div class="span9">
+                <h1 class="page-header">
+                    
+     {if condition="($id=='1')"}
+
+         生活用品
+         {else/}
+手工制品
+        {/if}
+
+
+                </h1>
+                <div class="properties-rows">
+
+</div><!-- /.properties-rows -->                <div class="properties-grid">
+    <div class="row">
+
+     {foreach name="goods" item="data1"}
+        <div class="property span3">
+            <div class="image">
+                <div class="content">
+                    <a href="{:Url('index/maint/goods_detail',['id' => $data1['product_id']])}"></a>
+                    <img   style="width: 300px; height: 200px;" src="__PIC__{$data1['product_pic_url']}" alt="">
+                </div><!-- /.content -->
+                <div class="price"><b><font color="red">{$data1['product_price']}</font>（积分）</b></div><!-- /.price -->
+            </div><!-- /.image -->
+
+            <div class="title">
+                <h2><a href="{:Url('index/maint/goods_detail',['id' => $data1['product_id']])}">{$data1['product_name']}</a></h2>
+            </div><!-- /.title -->
+
+            <div class="area" style="float: right;margin-right: 5px;">
+                <span class="key">付款量:</span><!-- /.key -->
+                <span class="value">120</span><!-- /.value -->
+            </div><!-- /.area -->
+        </div><!-- /.property -->
+   {/foreach}
+
+
+
+
+    </div><!-- /.row -->
+</div><!-- /.properties-grid -->
+                <div class="pagination pagination-centered">
+{$goods->render()}
+</div><!-- /.pagination -->            </div>
+            <div class="sidebar span3">
+                <div class="widget our-agents">
+    <div class="title">
+        <h2>热门商品</h2>
+    </div><!-- /.title -->
+
+    <div class="content">
+
+         {foreach name="goods1" item="data1"}
+        <div class="agent">
+            <div class="image">
+                <img style="width: 60px; height: 50px;" src="__PIC__{$data1['product_pic_url']}" alt="">
+            </div><!-- /.image -->
+            <div class="name">{$data1['product_name']}</div><!-- /.name -->
+            <div class="email"><font color="red">{$data1['product_price']}</font></div><!-- /.email -->
+        </div><!-- /.agent -->
+ {/foreach}
+      
+    </div><!-- /.content -->
+</div><!-- /.our-agents -->
+                <div class="ad widget">
+    <h2>广告</h2>
+    <div class="content">
+        <a href="#"><img src="__IMG__/banner/1.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/2.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/3.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/4.jpg" alt="Banner"></a>
+    </div><!-- /.content -->
+</div><!-- /.ad -->
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                个人账户设置
+                            </div>
+<form method="post"  enctype="multipart/form-data" action="{:Url('index/index/person_setpic')}">
+                            <div class="card-body">
+                                <div class="row mb-5">
+                                    <div class="col-md-4 mb-4">
+                                        <div>头像</div>
+                                        <div class="text-muted small">These information are visible to the public.</div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6" >
+
+                                       用户头像：<input type="file" name="image_url" /> <br><br>
+                                        <img src="__PIC__{$user['user_touxiang']}" class="img" width="300">
+
+
+
+                                                    <img src="">
+                                            </div>
+                                        </div>
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                                <hr>
+<form name="reg_testdate" method="post"   action="{:Url('index/index/person_setperson')}">
+                                <div class="row mb-5">
+                                    <div class="col-md-4 mb-4">
+                                        <div>基本资料</div>
+                                        <div class="text-muted small">These information are visible to the public.</div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">用户名：</label>
+                                                    <input class="form-control" name="user_name" value="{$user['user_name']}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">密码：</label>
+                                                    <input class="form-control" name="user_pswd" value="{$user['user_pswd']}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">真实姓名：</label>
+                                                    <input class="form-control" name="user_truename" value="{$user['user_truename']}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">身份证号：</label>
+                                                    <input class="form-control" name="user_IDcard" value="{$user['user_IDcard']}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">手机号码：</label>
+                                                    <input class="form-control" name="user_tel" value="{$user['user_tel']}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">邮箱：</label>
+                                                    <input class="form-control" name="user_email" value="{$user['user_email']}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">性别：</label>
+
+
+{if condition="($user['user_sex']=='男')"}
+                                                    <input type="radio" value="男" name="sex" checked="checked">男
+                                                     <input type="radio" value="女" name="sex">女
+         {else/}
+           <input type="radio" value="男" name="sex">男
+                                                    <input type="radio" value="女" name="sex" checked="checked">女
+        {/if}
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">生日：</label>
+    <select name="YYYY" onChange="YYYYDD(this.value)">
+        <option value="{$bir['y']}" selected="selected">{$bir['y']}</option>
+    </select>
+    <select name="MM" onChange="MMDD(this.value)">
+        <option value="{$bir['y']}" selected="selected">{$bir['m']}</option>
+    </select>
+    <select name="DD" onChange="DDD(this.value)">
+        <option value="{$bir['y']}" selected="selected">{$bir['d']}</option>
+    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">居住地址（收货地址）：</label>
+                                                    <input class="form-control" name="user_community" value="{$user['user_community']}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+</form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>和我们合作</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+
+            <!-- HEADER -->
+            <div id="header-wrapper">
+                <div id="header">
+                    <div id="header-inner">
+                        <div class="container">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <div class="row">
+                                        <div class="logo-wrapper span4">
+                                            <a href="#nav" class="hidden-desktop" id="btn-nav">Toggle navigation</a>
+
+                                            <div class="logo">
+                                                <a href="../index/index.html" title="Home">
+                                                    <img src="__IMG__/logo.png" alt="Home">
+                                                </a>
+                                            </div><!-- /.logo -->
+
+                                            <div class="site-name">
+                                                <a href="" title="Home" class="brand">绿驿</a>
+                                            </div><!-- /.site-name -->
+
+                                            <div class="site-slogan">
+                                                <span>Green<br> Station</span>
+                                            </div><!-- /.site-slogan -->
+                                        </div><!-- /.logo-wrapper -->
+
+                                        <div class="info">
+                                            <div class="site-email">
+                                                <a href="">@163.com</a>
+                                            </div><!-- /.site-email -->
+
+                                            <div class="site-phone">
+                                                <span>333-666-777</span>
+                                            </div><!-- /.site-phone -->
+                                        </div><!-- /.info -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.navbar-inner -->
+                            </div><!-- /.navbar -->
+                        </div><!-- /.container -->
+                    </div><!-- /#header-inner -->
+                </div><!-- /#header -->
+            </div><!-- /#header-wrapper -->
+            <!-- CONTENT -->
+            <div id="content">
+                <div class="container">
+        <div id="main">
+            <div class="row">
+                <div class="span9">
+                        <h2>请填写您机构的资料</h2>
+
+                        <form method="post" enctype="multipart/form-data" class="contact-form" action="{:Url('index/login/register_hezuo')}">
+                            <div class="name control-group" style="float: none;">
+                                <label class="control-label" for="inputContactName">
+                                    机构名称（全称）
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="text" id="inputContactName" name="name">
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+                            <div class="name control-group" style="float: none;">
+                                <label class="control-label" for="inputContactName">
+                                    密码
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="text" id="inputContactName" name="password">
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputContactName">
+                                    机构LOGO
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="file" name="image_url" /> <br><br>
+                                        <img src="" class="img" width="300">
+
+
+
+                                                    <img src="">
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                                <div class="control-group">
+                                <label class="control-label" for="inputContactName">
+                                    类别
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                     <select name="type1" size="1" id="type" style="width: 100px;">
+                                         <option value="公司">公司</option>
+                                         <option value="政府">政府</option>
+                                    </select>
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputContactEmail">
+                                    机构地址
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="text" id="inputContactName" name="address">
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+                            <div class="control-group">
+                                <label class="control-label" for="inputContactName">
+                                    联系人
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="text" id="inputContactName" name="con">
+                                </div><!-- /.controls -->
+                                <label class="control-label" for="inputContactName">
+                                    联系人性别
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="radio" id="inputContactName" name="sex" value="男">男
+                                </div><!-- /.controls -->
+                                <div class="controls">
+                                    <input type="radio" id="inputContactName" name="sex" value="女">女
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+                            <div class="control-group">
+                                <label class="control-label" for="inputContactName">
+                                    联系人联系方式
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="text" id="inputContactName" name="tel">
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputContactMessage">
+                                    机构服务
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+
+                                <div class="controls">
+                                    <textarea id="inputContactMessage" name="content"></textarea>
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                            <div class="form-actions">
+                                <input type="submit" class="btn btn-primary arrow-right" value="发送">
+                            </div><!-- /.form-actions -->
+                        </form>
+                </div>
+
+                <div class="sidebar span3">
+                    <div class="widget properties last">
+</div><!-- /.properties -->
+                    <div class="ad widget">
+    <h2>广告</h2>
+    <div class="content">
+        <a href="#"><img src="__IMG__/banner/1.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/2.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/3.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/4.jpg" alt="Banner"></a>
+    </div><!-- /.content -->
+</div><!-- /.ad -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script type="text/javascript">
+    $("input[name='image_url']").change(function(){
+        $(".img").attr("src",URL.createObjectURL($(this)[0].files[0]));
+    });
+</script>
+</body>
+</html>

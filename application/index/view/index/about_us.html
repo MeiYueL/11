@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=g4o3s8Kkvaba8OH1xrwSKfD9YMQWMysP">
+//v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+    </script>
+    <title>关于我们</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content">
+<div class="container">
+    <div>
+        <div id="main">
+            <div class="about-us">
+    <h2 class="page-header">关于我们</h2>
+
+    <div class="row">
+        <div class="content">
+            <div class="member span4">
+                <img src="__IMG__/photos/john-doe-original.png" alt="John Doe">
+                <h2>Ori</h2>
+                <p>项目经理</p>
+            </div><!-- /.member -->
+
+            <div class="member span4">
+                <img src="__IMG__/photos/emma-hearth-original.png" alt="Emma Hearth">
+                <h2>Yuk</h2>
+                <p>WEB开发</p>
+            </div><!-- /.member -->
+
+            <div class="member span4">
+                <img src="__IMG__/photos/angie-blair-original.png" alt="Angie Blair">
+                <h2>Zaa</h2>
+                <p>Android开发</p>
+            </div><!-- /.member -->
+
+            <div class="member span4">
+                <img src="__IMG__/photos/angie-blair-original.png" alt="Angie Blair">
+                <h2>Rus</h2>
+                <p>物联网开发</p>
+            </div><!-- /.member -->
+
+            <div class="member span4">
+                <img src="__IMG__/photos/angie-blair-original.png" alt="Angie Blair">
+                <h2>Zay</h2>
+                <p>物联网开发</p>
+            </div><!-- /.member -->
+        </div><!-- /.content -->
+    </div><!-- /.row -->
+</div><!-- /.about-us -->
+            <hr>
+
+            <div class="row">
+                <div class="span6">
+                    <h2>我们的任务</h2>
+                    <p style="font-size:15px;">&nbsp;&nbsp;生活垃圾造成的污染一直是中国最严重的社会公害之一。鉴于改革开放以来中国经济的高速发展、城市数量以及人口显著增加、城市规模和范围不断扩大、城市化进程的加快，中国城市生活垃圾产量不断增长，尤其是近年来，随着经济的迅猛发展，公共场合的垃圾不能很好的收集，造成垃圾污染环境和影响市容的问题也越来越严重。所以，把垃圾良好的收集、处理，防止环境污染，保护环境，维持生态平衡创造良好的市容市貌，已成为社会发展的一项重要举措。而就如何科学合理的收集和处理垃圾，“互联网+回收”和物联网是促进传统回收行业转型升级的重要手段之一。于是，响应社会需求，我们的智能垃圾分类项目应运而生。 </p>
+                    <p>&nbsp;&nbsp;项目主要通过物联网开发实现分类垃圾桶的智能化，借此来收集民众的垃圾产生以及分类情况，然后进行反馈和奖惩，根据用户产生垃圾的重量奖励积分，可提现或，由回收人员判断分类的准确性在进行扣钱或积分的操作，同时大力宣传垃圾分类的利弊，以及垃圾分类后处理过程，帮助民众认识到垃圾分类的重要性，本平台不单单面向普通用户，也接入社区或组织管理人员、垃圾回收公司和政府，实现垃圾处理全过程的整合，我们是联系现实，整合数据的平台，是“互联网+环境保护+大数据”的创新创业项目，平台主要以网站和手机智能移动客户端（APP）作为载体。包括基础信息管理、垃圾分类管理、积分管理、数据分析、商铺管理、信息管理以及系统管理等。</p>
+
+                    <p><a href="{:Url('index/index/contact_us')}" class="btn btn-primary">联系我们</a>
+                        <a href="{:Url('index/index/cooperate')}" class="btn btn-primary">我要合作</a>
+                    </p></div>
+                <div class="span6">
+                    <h2>工作室所在</h2>
+                    <div id="allmap" style="width: 100%;height: 300px;overflow: hidden;margin:0;font-family:"微软雅黑";"></div>
+                </div>
+            </div>
+            <div class="partners">
+    <h2 class="page-header">合作伙伴</h2>
+    <div class="content">
+        <div class="partner">
+            <a href="http://logopond.com/gallery/detail/192115">
+                <img src="__IMG__/photos/logo-sokolov.png" alt="Logo">
+            </a>
+        </div><!-- /.partner -->
+
+        <div class="partner">
+            <a href="http://logopond.com/gallery/detail/191954">
+                <img src="__IMG__/photos/logo-love-letters.png" alt="Logo">
+            </a>
+        </div><!-- /.partner -->
+
+        <div class="partner">
+            <a href="http://logopond.com/gallery/detail/192592">
+                <img src="__IMG__/photos/logo-royal-markt.png" alt="Logo">
+            </a>
+        </div><!-- /.partner -->
+
+        <div class="partner">
+            <a href="http://logopond.com/gallery/detail/192905">
+                <img src="__IMG__/photos/logo-shuba.png" alt="Logo">
+            </a>
+        </div><!-- /.partner -->
+
+        <div class="partner">
+            <a href="http://logopond.com/gallery/detail/192394">
+                <img src="__IMG__/photos/logo-sunsynk.png" alt="Logo">
+            </a>
+        </div><!-- /.partner -->
+    </div><!-- /.content -->
+</div><!-- /.partners-->        </div>
+    </div>
+</div>
+
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script type="text/javascript"> 
+
+//点击显示位置
+var map = new BMap.Map("l-map");      
+map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);      
+// 创建地理编码实例      
+var myGeo = new BMap.Geocoder();      
+// 根据坐标得到地址描述    
+myGeo.getLocation(new BMap.Point(116.364, 39.993), function(result){      
+    if (result){      
+    alert(result.address);      
+    }      
+});
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(116.331398,39.897445);
+map.centerAndZoom(point,12);
+var geoc = new BMap.Geocoder();    
+map.addEventListener("click", function(e){        
+    var pt = e.point;
+    geoc.getLocation(pt, function(rs){
+        var addComp = rs.addressComponents;
+        alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+    });        
+});
+// 样式
+var myStyleJson=[
+          {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": {
+                              "lightness": 20
+                    }
+          },
+          {
+                    "featureType": "highway",
+                    "elementType": "geometry",
+                    "stylers": {
+                              "color": "#f49935"
+                    }
+          },
+          {
+                    "featureType": "railway",
+                    "elementType": "all",
+                    "stylers": {
+                              "visibility": "off"
+                    }
+          },
+          {
+                    "featureType": "local",
+                    "elementType": "labels",
+                    "stylers": {
+                              "visibility": "off"
+                    }
+          },
+          {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": {
+                              "color": "#d1e5ff"
+                    }
+          },
+          {
+                    "featureType": "poi",
+                    "elementType": "labels",
+                    "stylers": {
+                              "visibility": "off"
+                    }
+          }
+];
+map.setMapStyle({styleJson: myStyleJson });
+</script>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(120.575441,29.994718);
+    map.centerAndZoom(point,14);
+    var marker = new BMap.Marker(point);        // 创建标注    
+    map.addOverlay(marker);
+    //定位
+    // var geolocation = new BMap.Geolocation();
+    // geolocation.getCurrentPosition(function(r){
+    //     if(this.getStatus() == BMAP_STATUS_SUCCESS){
+    //         var mk = new BMap.Marker(r.point);
+    //         map.addOverlay(mk);
+    //         map.panTo(r.point);
+    //         //alert('您的位置：'+r.point.lng+','+r.point.lat);
+    //     }
+    //     else {
+    //         //alert('failed'+this.getStatus());
+    //     }        
+    // },{enableHighAccuracy: true})
+    //关于状态码
+    //BMAP_STATUS_SUCCESS   检索成功。对应数值“0”。
+    //BMAP_STATUS_CITY_LIST 城市列表。对应数值“1”。
+    //BMAP_STATUS_UNKNOWN_LOCATION  位置结果未知。对应数值“2”。
+    //BMAP_STATUS_UNKNOWN_ROUTE 导航结果未知。对应数值“3”。
+    //BMAP_STATUS_INVALID_KEY   非法密钥。对应数值“4”。
+    //BMAP_STATUS_INVALID_REQUEST   非法请求。对应数值“5”。
+    //BMAP_STATUS_PERMISSION_DENIED 没有权限。对应数值“6”。(自 1.1 新增)
+    //BMAP_STATUS_SERVICE_UNAVAILABLE   服务不可用。对应数值“7”。(自 1.1 新增)
+    //BMAP_STATUS_TIMEOUT   超时。对应数值“8”。(自 1.1 新增)
+</script>

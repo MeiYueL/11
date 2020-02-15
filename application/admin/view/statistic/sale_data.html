@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>垃圾投放情况</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+    <script   type="text/javascript" src="__JS__/echarts.min.js"></script>
+</head>
+<body class="sidebar-fixed header-fixed" onload="load()">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div >
+                        <div class="card-body">
+                           <div id="main" style="width: 1000px; height: 400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+
+            <div class="row">
+                <div class="col-md-6" >
+                    <div >
+                        <div class="card-body">
+                           <div id="main1" style="width: 1000px; height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="row">
+                <div class="col-md-6" >
+                    <div >
+                        <div class="card-body">
+                           <div id="main2" style="width: 1000px; height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+
+
+ <script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'));
+
+option = {
+    title: {
+        text: '消费额排名前10的用户',
+   //     subtext: '数据来自网络'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    },
+    yAxis: {
+        type: 'category',
+        data: [{foreach name="order" item="data1"}
+                "{$data1['time']}",
+                {/foreach}]
+    },
+    series: [
+        {
+            name: '2011年',
+            type: 'bar',
+            data: [{foreach name="order" item="data1"}
+                "{$data1['qq']}",
+                {/foreach}]
+        }
+    ]
+};
+
+
+        // 使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+
+
+
+
+
+         /*基于准备好的dom，初始化echarts实例*/
+        var myChart = echarts.init(document.getElementById('main1'));
+
+       option = {
+    backgroundColor: '#2c343c',
+
+    title: {
+        text: '各商品总销售量',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+
+    visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series : [
+        {
+            name:'总销量',
+            type:'pie',
+            radius : '120%',
+            center: ['50%', '50%'],
+            data:[
+
+                {foreach name="s" item="data1"}
+                 {value:{$data1['qq']}, name:"{$data1['product_name']}",},
+                   
+                {/foreach}
+            ].sort(function (a, b) { return a.value - b.value; }),
+            roseType: 'radius',
+            label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
+            }
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+
+
+
+
+           /*基于准备好的dom，初始化echarts实例*/
+        var myChart = echarts.init(document.getElementById('main2'));
+option = {
+        title: {
+        text: '近一个月的商品销售情况',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#000000'
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [{foreach name="s1" item="data1"}
+                "{$data1['time']}",
+                {/foreach}]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [{foreach name="s1" item="data1"}
+                "{$data1['qq']}",
+                {/foreach}],
+        type: 'line',
+        areaStyle: {}
+    }]
+};
+
+        // 使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+
+
+</body>
+</html>

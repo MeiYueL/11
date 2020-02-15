@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>垃圾投放情况11</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+     <script   type="text/javascript" src="__JS__/echarts.min.js"></script>
+</head>
+<body class="sidebar-fixed header-fixed" onload="load()">
+<div class="page-wrapper">
+    {include file="index@header_person" /}    
+
+    <div class="main-container">
+        {include file="index@left_person" /}
+
+
+        <div class="content">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div style="text-align:center" >
+                        <div style="text-align:center">
+                                <div style="text-align:center;">
+                                <form method="post"  action="{:Url('index/otheruser/goverment_chart1')}">
+                               <select id='shuju' name="shuju" >
+         {if condition="($data['shuju']=='投放')"}
+                                        <option value='投放' selected>垃圾投放数</option>
+                                        <option value='回收'>垃圾回收数</option>
+         {else/}
+                                        <option value='投放'>垃圾投放数</option>
+                                        <option value='回收'  selected>垃圾回收数</option>
+         {/if}
+                                </select>
+
+                                    <select class='prov'  name="one" id='prov' onchange='changeCity()'>
+                                        <option value='-'>-</option>
+
+                                    </select>
+<select class='city' id='city' name="two">
+         {if condition="($data['two']=='绍兴市')"}
+                                        <option value='绍兴市' selected>绍兴市</option>
+                                        <option value='杭州市'>杭州市</option>
+                                        <option value='温州市'>温州市</option>
+         {elseif condition="($data['two']=='杭州市')"/}
+                                        <option value='绍兴市'>绍兴市</option>
+                                        <option value='杭州市'  selected>杭州市</option>
+                                        <option value='温州市'>温州市</option>
+        {elseif condition="($data['two']=='温州市')" /}
+                                        <option value='绍兴市'>绍兴市</option>
+                                        <option value='杭州市'>杭州市</option>
+                                        <option value='温州市'selected>温州市</option>
+
+{elseif condition="($data['two']=='所有时间')" /}
+                                        <option value='所有时间' selected>所有时间</option>
+                                        <option value='近一年'>近一年</option>
+                                        <option value='近一个月'>近一个月</option>
+                                        <option value='近一周'>近一周</option>
+
+
+{elseif condition="($data['two']=='近一年')" /}
+                                        <option value='所有时间' >所有时间</option>
+                                        <option value='近一年' selected>近一年</option>
+                                        <option value='近一个月'>近一个月</option>
+                                        <option value='近一周'>近一周</option>
+{elseif condition="($data['two']=='近一个月')" /} 
+                                        <option value='所有时间' >所有时间</option>
+                                        <option value='近一年'>近一年</option>
+                                        <option value='近一个月' selected>近一个月</option>
+                                        <option value='近一周'>近一周</option>  
+                        {else /}
+                                          <option value='所有时间' >所有时间</option>
+                                        <option value='近一年'>近一年</option>
+                                        <option value='近一个月' >近一个月</option>
+                                        <option value='近一周' selected>近一周</option>                                 
+         {/if}
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">查询</button>
+                                </form>
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="row" style="text-align:center">    
+                <div class="col-md-6">
+                    <div >
+                        <div >
+
+                        </div>
+
+                        <div class="card-body">
+                            <div id="main1" style="width: 1200px; height: 500px;text-align:center;">
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+
+ <script type="text/javascript">
+
+
+      var s="{$data['one']}";
+     //   alert(s);
+        var province=document.getElementById("prov");
+        var city=document.getElementById("city");
+
+
+
+        if(s=='地点')
+        {
+            var arr_prov=new Array(new Option("地点","地点"),new Option("垃圾分类","垃圾分类"));
+            var arr_city=new Array();
+    
+           arr_city[1]=new Array(new Option("绍兴市",'绍兴市'),new Option("杭州市",'杭州市'),new Option("温州市",'温州市'));
+
+            arr_city[0]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));
+
+        }
+        else
+        {
+            var arr_prov=new Array(new Option("垃圾分类","垃圾分类"),new Option("地点","地点"));
+            var arr_city=new Array();
+     
+            arr_city[0]=new Array(new Option("绍兴市",'绍兴市'),new Option("杭州市",'杭州市'),new Option("温州市",'温州市'));
+            arr_city[1]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));         
+        }
+
+
+        //动态载入所有省份
+        function load(){
+            for(var i=0;i<arr_prov.length;i++){
+                province.options[i]=arr_prov[i];
+            }
+        }
+        //选中省份之后，根据索引动态载入相应城市
+        function changeCity(){
+            //清空上次的选项
+            city.options.length=0;
+            //获取省一级的下拉列表选中的索引
+            var index=province.selectedIndex;
+            for(var i=0;i<arr_city[index].length;i++){
+                city.options[i]=arr_city[index][i];
+            }
+        }
+
+
+
+        var myChart = echarts.init(document.getElementById('main1'));
+option = {
+    title : {
+        text: ' 各{$data['one']}{$data['two']}的垃圾{$data['shuju']}情况',
+       // subtext: '纯属虚构',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: [{foreach name="s" item="data1"}
+                "{$data1['time']}",
+                {/foreach}]
+    },
+     color:['#37a2da','#66e0e5','#fedb5b','#ff9e81','#1b8ce8',],
+    series : [
+        {
+            name: '垃圾数量',
+            type: 'pie',
+            radius : '75%',
+            center: ['50%', '60%'],
+            data:[
+
+                 {foreach name="s" item="data1"}
+                    {value:{$data1['qq']}, name:"{$data1['time']}",},
+                {/foreach}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+
+        myChart.setOption(option);
+
+
+         
+    </script>
+
+
+
+
+</body>
+</html>

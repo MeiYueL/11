@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>增加新的垃圾类别</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                增加新的垃圾类别
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row mb-5">
+                                    
+                                 <form method="post" action=""{:Url('admin/litter/company_add')}"">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">垃圾类别名称：</label>
+                                                    <input class="form-control" name="category">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">垃圾类别危害：</label>
+                                                    <input class="form-control" name="danger">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">父类别：</label>
+                                                    <select name="fatherid" >
+                                                        <option value="1">可回收垃圾</option>
+                                                        <option value="2">厨余垃圾</option>
+                                                        <option value="3">有害垃圾</option>
+                                                        <option value="4">其他垃圾</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">垃圾类别详情：</label>
+                                                    <textarea name="detail" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+</body>
+</html>

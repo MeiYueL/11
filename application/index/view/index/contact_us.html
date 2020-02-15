@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=g4o3s8Kkvaba8OH1xrwSKfD9YMQWMysP">
+//v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+    </script>
+    <title>联系我们</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content">
+                <div class="container">
+        <div id="main">
+            <div class="row">
+                <div class="span9">
+                    <h1 class="page-header">联系我们</h1>
+                        <div id="allmap" style="width: 100%;height: 300px;overflow: hidden;margin:0;font-family:"微软雅黑";"></div>
+
+                        <p>
+                            浙江省
+                        </p>
+
+                        <div class="row">
+                            <div class="span3">
+                                <h3 class="address">地址</h3>
+                                <p class="content-icon-spacing">
+                                    浙江省
+                                </p>
+                            </div>
+                            <div class="span3">
+                                <h3 class="call-us">联系我们</h3>
+                                <p class="content-icon-spacing">
+                                    333-666-777
+                                </p>
+                            </div>
+                            <div class="span3">
+                                <h3 class="email">邮箱</h3>
+                                <p class="content-icon-spacing">
+                                    <a href="">@163.com</a>
+                                </p>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="sidebar span3">
+                    <div class="widget properties last">
+    <div class="title">
+        <h2>最新商品</h2>
+    </div><!-- /.title -->
+
+    <div class="content">
+
+             {foreach name="goods1" item="data1"}
+        <div class="property">
+            <div class="image">
+                <a href="detail.html"></a>
+                <img src="__PIC__{$data1['product_pic_url']}" alt="">
+            </div><!-- /.image -->
+
+            <div class="wrapper">
+                <div class="title">
+                    <h3>
+                        <a href="detail.html">{$data1['product_name']}</a>
+                    </h3>
+                </div><!-- /.title -->
+                <div class="location"></div><!-- /.location -->
+                <div class="price">{$data1['product_price']}</div><!-- /.price -->
+            </div><!-- /.wrapper -->
+        </div><!-- /.property -->
+ {/foreach}
+    </div><!-- /.content -->
+</div><!-- /.properties -->
+                    <div class="ad widget">
+    <h2>广告</h2>
+    <div class="content">
+        <a href="#"><img src="__IMG__/banner/1.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/2.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/3.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/4.jpg" alt="Banner"></a>
+    </div><!-- /.content -->
+</div><!-- /.ad -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script type="text/javascript"> 
+
+//点击显示位置
+var map = new BMap.Map("l-map");      
+map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);      
+// 创建地理编码实例      
+var myGeo = new BMap.Geocoder();      
+// 根据坐标得到地址描述    
+myGeo.getLocation(new BMap.Point(116.364, 39.993), function(result){      
+    if (result){      
+    alert(result.address);      
+    }      
+});
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(116.331398,39.897445);
+map.centerAndZoom(point,12);
+var geoc = new BMap.Geocoder();    
+map.addEventListener("click", function(e){        
+    var pt = e.point;
+    geoc.getLocation(pt, function(rs){
+        var addComp = rs.addressComponents;
+        alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+    });        
+});
+// 样式
+var myStyleJson=[
+          {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": {
+                              "lightness": 20
+                    }
+          },
+          {
+                    "featureType": "highway",
+                    "elementType": "geometry",
+                    "stylers": {
+                              "color": "#f49935"
+                    }
+          },
+          {
+                    "featureType": "railway",
+                    "elementType": "all",
+                    "stylers": {
+                              "visibility": "off"
+                    }
+          },
+          {
+                    "featureType": "local",
+                    "elementType": "labels",
+                    "stylers": {
+                              "visibility": "off"
+                    }
+          },
+          {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": {
+                              "color": "#d1e5ff"
+                    }
+          },
+          {
+                    "featureType": "poi",
+                    "elementType": "labels",
+                    "stylers": {
+                              "visibility": "off"
+                    }
+          }
+];
+map.setMapStyle({styleJson: myStyleJson });
+</script>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(120.575441,29.994718);
+    map.centerAndZoom(point,14);
+    var marker = new BMap.Marker(point);        // 创建标注    
+    map.addOverlay(marker);
+    //定位
+    // var geolocation = new BMap.Geolocation();
+    // geolocation.getCurrentPosition(function(r){
+    //     if(this.getStatus() == BMAP_STATUS_SUCCESS){
+    //         var mk = new BMap.Marker(r.point);
+    //         map.addOverlay(mk);
+    //         map.panTo(r.point);
+    //         //alert('您的位置：'+r.point.lng+','+r.point.lat);
+    //     }
+    //     else {
+    //         //alert('failed'+this.getStatus());
+    //     }        
+    // },{enableHighAccuracy: true})
+    //关于状态码
+    //BMAP_STATUS_SUCCESS   检索成功。对应数值“0”。
+    //BMAP_STATUS_CITY_LIST 城市列表。对应数值“1”。
+    //BMAP_STATUS_UNKNOWN_LOCATION  位置结果未知。对应数值“2”。
+    //BMAP_STATUS_UNKNOWN_ROUTE 导航结果未知。对应数值“3”。
+    //BMAP_STATUS_INVALID_KEY   非法密钥。对应数值“4”。
+    //BMAP_STATUS_INVALID_REQUEST   非法请求。对应数值“5”。
+    //BMAP_STATUS_PERMISSION_DENIED 没有权限。对应数值“6”。(自 1.1 新增)
+    //BMAP_STATUS_SERVICE_UNAVAILABLE   服务不可用。对应数值“7”。(自 1.1 新增)
+    //BMAP_STATUS_TIMEOUT   超时。对应数值“8”。(自 1.1 新增)
+</script>

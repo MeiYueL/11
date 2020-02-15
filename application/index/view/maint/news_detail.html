@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>文章详情</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content"><div class="container">
+    <div id="main">
+        <div class="row">
+            <div class="span9" style="height:auto">
+                <h1 class="page-header">文章标题</h1>
+
+                <div class="property-detail">
+                    <div class="pull-left overview" style="width: 90%;">
+                        <div class="row">
+                            <div class="span3"style="width: 100%;">
+                                <table width="100%">
+                                    <tr>
+                                        <th width="50px">出处:</th>
+                                        <td>{$article['article_from']}</td>
+                                        <td width="100px"></td>
+                                        <th width="70px">发布时间: </th>
+                                        <td>{$article['article_time']}</td>
+                                        <td width="100px"></td>
+                                        <th width="70px">阅读量:</th>
+                                        <td>{$article['article_click']}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- /.span2 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+
+                    <p><strong>{$article['article_content']}  </p>
+
+                        <h2>评论</h2>
+
+                    <div class="row">
+                        
+                        <form method="post" action="{:Url('index/maint/add_comment')}">
+                            <div class="control-group" style="text-align: center;">
+                                <div class="controls">
+                                    <textarea id="inputMessage" name="content"style="width: 80%;"></textarea>
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+                                  <input type="hidden"  name="danjia" id="danjia" value="{$article['article_id']}">
+                            <div class="form-actions" style="margin-left: 78%;">
+                                <input type="submit" class="btn btn-primary arrow-right" value="发表评论">
+                            </div><!-- /.form-actions -->
+                        </form>
+                    </div>
+
+                    <h2>全部评论</h2>
+
+                    <div id="property-map">
+                        <table width=100% style="border-top:1px grey solid;">
+                        {foreach name="reply" item="data1"}
+                                <tr>
+                                    <td rowspan="3" width="85px"><div style="border-radius: 30px;width: 80px;height: 80px;"><img src="__IMG__/touxiang/default_girl.jpg" alt="" width=80px height= 80px ></div></td>
+                                </tr>
+                                <tr>
+                                    <td><font color="blue" width="100px">{$data1['user_name']}</font></td>
+                                    <td width="300px">{$data1['article_comment_time']}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><font color="black" size="3">{$data1['article_comment_content']}</font></td>
+                                </tr>
+                                 <form method="post"   action="{:Url('index/maint/add_replycomment')}">
+                                <tr>
+
+                                    <td width="100px"><input type="hidden"   name="id" value="{$data1['article_comment_id']}">
+                                    <input type="hidden"   name="danjia" value="{$data1['article_id']}">
+                                    <input class="form-control" name="classname" ></td>
+                                    <td><button type="submit" class="btn btn-primary">评论</button></td>
+
+                                </tr>
+        </form>
+
+                  {foreach name='reply1' item='v'}
+                       {if condition="($v['article_comment_id']==$data1['article_comment_id'])"}
+                                 <tr>
+                                    <td>{$v.user_name}</td>
+                                    <td width="100px"> 
+                                     {$v.article_reply_content}
+                                    </td>
+                                    <td></td>
+                                </tr>
+                        {/if}
+                {/foreach}
+    
+
+                                     
+                                        
+                                   
+                         {/foreach}
+                        </table>
+
+                    </div><!-- /#property-map -->
+                </div>
+
+            </div>
+            <div class="sidebar span3">
+                <div class="widget our-agents">
+    
+                <div class="widget properties last">
+    <div class="title">
+        <h2>最新资讯</h2>
+    </div><!-- /.title -->
+
+    <div class="content">
+        {foreach name="article1" item="data1"}
+        <div class="property">
+            <div class="image">
+                <a href="{:Url('index/maint/news_detail',['id' => $data1['article_id']])}"></a>
+                <img src="__PIC__{$data1['article_pic_url']}" alt="">
+            </div><!-- /.image -->
+
+            <div class="wrapper">
+                <div class="title">
+                    <h3>
+                        <a href="{:Url('index/maint/news_detail',['id' => $data1['article_id']])}">{$data1['article_name']}</a>
+                    </h3>
+                </div><!-- /.title -->
+                <div class="location"></div><!-- /.location -->
+                <div class="price">阅读量{$data1['article_click']}</div><!-- /.price -->
+            </div><!-- /.wrapper -->
+        </div><!-- /.property -->
+    {/foreach}
+
+    </div><!-- /.content -->
+</div><!-- /.properties -->
+            </div>
+        </div>
+    </div>
+</div>
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+</body>
+</html>

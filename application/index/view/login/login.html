@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>登录</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content">
+<div class="container">
+    <div>
+        <div id="main">
+            <div class="login-register">
+<div class="row">
+<div class="span4">
+    <ul class="tabs nav nav-tabs">
+        <li class="active"><a href="#login">Login</a></li>
+    </ul>
+    <!-- /.nav -->
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="login">
+            <form method="post" action="login.html">
+                <p id="err_msg">欢迎登陆</p>
+                <div class="control-group">
+                    <label class="control-label" for="inputLoginLogin">
+                        用户名
+                        <span class="form-required" title="This field is required.">*</span>
+                    </label>
+
+                    <div class="controls">
+                        <input type="text" id="inputLoginLogin" name="inputLoginLogin" required="true">
+                    </div>
+                    <!-- /.controls -->
+                </div>
+                <!-- /.control-group -->
+
+                <div class="control-group">
+                    <label class="control-label" for="inputLoginPassword">
+                        密码
+                        <span class="form-required" title="This field is required.">*</span>
+                    </label>
+
+                    <div class="controls">
+                        <input type="password" id="inputLoginPassword" name="inputLoginPassword" required="true">
+                    </div>
+                    <!-- /.controls -->
+                </div>
+                <!-- /.control-group -->
+
+
+                <div class="control-group">
+<select name="sort" size="1" id="sort" style="width: 100px;">
+    <option>普通用户</option>
+      <option>公司</option>
+        <option>政府</option>
+ </select>
+                    <!-- /.controls -->
+                </div>
+
+
+                <div class="form-actions">
+                    <input type="button" value="登录" class="btn btn-primary arrow-right" id="login_btn">
+                    <a href="{:Url('index/login/register')}" title="">还未注册？</a>
+                </div>
+                <!-- /.form-actions -->
+            </form>
+
+
+        </div>
+        <!-- /.tab-pane -->
+    </div>
+    <!-- /.tab-content -->
+</div>
+<!-- /.span4-->
+<div class="span8" style="background-image: url('__IMG__/login/login.jpg');height: 350px;margin-top: 20px;">
+</div>
+
+</div>
+<!-- /.row -->
+</div><!-- /.login-register -->        </div>
+    </div>
+</div>
+
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript">
+    $(function () 
+    {
+        $('#login_btn').click(function()
+        {
+           // alert('asddbsb');
+            var username = $('#inputLoginLogin').val();
+            var password = $('#inputLoginPassword').val();
+            var sort = $('#sort').val();
+          //  alert(sort);
+            $.post("{:url('login')}",{'user_name':username, 'password':password, 'sort':sort},function(data)
+            {
+                if(data.code!=1){
+                    $('#err_msg').show().html("<span style='color:red'>"+data.msg+"</span>");
+                    return;
+                }
+                else
+                {
+                    window.location.href=data.data;
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

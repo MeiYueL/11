@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单管理</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6" style="flex:0 0 100%;max-width: 100%;">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>申请名</th>
+                                        <th>email</th>
+                                        <th>电话</th>
+                                        <th>内容</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                      {foreach name="order" item="data1"}
+                                    <tr>
+                                        <td>{$data1['apply_id']}</td>
+                                        <td><a href="{:url('admin/other/order_detail')}">{$data1['apply_name']}</a></td>
+                                        <td class="text-nowrap">{$data1['apply_email']}</td>
+                                        <td>{$data1['apply_tel']}</td>
+                                        <td>{$data1['apply_content']}</td>
+                                        <td>
+                                        <a  class="btn btn-outline-info"  href="{:Url('admin/other/apply1',['s' => $data1['apply_id']])}" >通过</a>
+
+<a  class="btn btn-outline-info"  href="{:Url('admin/other/apply2',['s' => $data1['apply_id']])}" >不通过</a>
+                                        </td>
+                                    </tr>
+                                          {/foreach}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+</body>
+</html>

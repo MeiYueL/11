@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+    <script   type="text/javascript" src="__JS__/echarts.min.js"></script>
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="index@header_person" /}    
+
+    <div class="main-container">
+        {include file="index@left_person" /}
+
+         <div class="content">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div style="text-align:center" >
+                        <div style="text-align:center">
+                                <div style="text-align:center;">
+                                <form method="post"  action="{:Url('index/otheruser/goverment_chart')}">
+                                 <select id='shuju' name="shuju" >
+
+
+
+         {if condition="($data['shuju']=='投放')"}
+                                        <option value='投放' selected>垃圾投放数</option>
+                                        <option value='回收'>垃圾回收数</option>
+         {else/}
+                                        <option value='投放'>垃圾投放数</option>
+                                        <option value='回收'  selected>垃圾回收数</option>
+         {/if}
+                                </select>
+
+                                    <select class='prov'  name="one" id='prov' onchange='changeCity()'>
+                 {if condition="($data['one']=='时间')"}
+                                        <option value='时间' selected>时间</option>
+                                        <option value='地点'>地点</option>
+                                        <option value='用户'>用户</option>
+         {elseif condition="($data['one']=='地点')"/}
+                                        <option value='时间' >时间</option>
+                                        <option value='地点' selected>地点</option>
+                                        <option value='用户'>用户</option>
+         {else /}
+                                     <option value='时间' >时间</option>
+                                        <option value='地点' >地点</option>
+                                        <option value='用户' selected>用户</option>
+         {/if}
+
+                                    </select>
+                                    <select class='city' id='city' name="two">
+         {if condition="($data['two']=='绍兴市')"}
+                                        <option value='绍兴市' selected>绍兴市</option>
+                                        <option value='杭州市'>杭州市</option>
+                                        <option value='温州市'>温州市</option>
+         {elseif condition="($data['two']=='杭州市')"/}
+                                        <option value='绍兴市'>绍兴市</option>
+                                        <option value='杭州市'  selected>杭州市</option>
+                                        <option value='温州市'>温州市</option>
+        {elseif condition="($data['two']=='温州市')" /}
+                                        <option value='绍兴市'>绍兴市</option>
+                                        <option value='杭州市'>杭州市</option>
+                                        <option value='温州市'selected>温州市</option>
+
+{elseif condition="($data['two']=='所有时间')" /}
+                                        <option value='所有时间' selected>所有时间</option>
+                                        <option value='近一年'>近一年</option>
+                                        <option value='近一个月'>近一个月</option>
+                                        <option value='近一周'>近一周</option>
+
+
+{elseif condition="($data['two']=='近一年')" /}
+                                        <option value='所有时间' >所有时间</option>
+                                        <option value='近一年' selected>近一年</option>
+                                        <option value='近一个月'>近一个月</option>
+                                        <option value='近一周'>近一周</option>
+{elseif condition="($data['two']=='近一个月')" /} 
+                                        <option value='所有时间' >所有时间</option>
+                                        <option value='近一年'>近一年</option>
+                                        <option value='近一个月' selected>近一个月</option>
+                                        <option value='近一周'>近一周</option>  
+  
+  {elseif condition="($data['two']=='近一周')" /}
+                                          <option value='所有时间' >所有时间</option>
+                                        <option value='近一年'>近一年</option>
+                                        <option value='近一个月' >近一个月</option>
+                                        <option value='近一周' selected>近一周</option>                                 
+         {/if}
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">查询</button>
+                                </form>
+
+                                </div>
+                        </div>
+
+                        <div class="card-body" style="width:1500px;">
+                          <div id="main1" style="width:50%;height:400px;text-align:center;float:right;">  </div>
+                          <div id="main" style="width:50%;height:400px;text-align:center; border:0px solid #000;float:right;"></div>
+  
+                    </div>
+                </div>
+            
+            </div>
+
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+
+<script type="text/javascript">
+
+   //     alert('asd');
+        var s="{$data['one']}";
+        var w="{$data['two']}";
+     //   alert(s);
+        var province=document.getElementById("prov");
+        var city=document.getElementById("city");
+
+        if(s=='时间')
+        {
+            var arr_prov=new Array(new Option("时间","时间"),new Option("地点","地点"),new Option("用户","用户"));
+            var arr_city=new Array();
+    
+           arr_city[0]=new Array(new Option("绍兴市",'绍兴市'),new Option("杭州市",'杭州市'),new Option("温州市",'温州市'));
+
+            arr_city[1]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));
+
+            arr_city[2]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));
+        }
+        else if(s=='地点')
+        {
+        var arr_prov=new Array(new Option("地点","地点"),new Option("用户","用户"),new Option("时间","时间"));
+        var arr_city=new Array();
+ 
+        arr_city[2]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));
+        arr_city[1]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));
+        arr_city[0]=new Array(new Option("绍兴市",'绍兴市'),new Option("杭州市",'杭州市'),new Option("温州市",'温州市'));
+
+        }
+        else
+        {
+        var arr_prov=new Array(new Option("用户","用户"),new Option("时间","时间"),new Option("地点","地点"));
+        var arr_city=new Array();
+ 
+       // alert('12');
+        arr_city[1]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));
+        arr_city[0]=new Array(new Option("绍兴市",'绍兴市'),new Option("杭州市",'杭州市'),new Option("温州市",'温州市'));
+        arr_city[2]=new Array(new Option("所有时间",'所有时间'),new Option("近一个月",'近一个月'),new Option("近一周",'近一周'),new Option("近一年",'近一年'));            
+        }
+        //动态载入所有省份
+        function load(){
+            for(var i=0;i<arr_prov.length;i++){
+                province.options[i]=arr_prov[i];
+            }
+        }
+        //选中省份之后，根据索引动态载入相应城市
+        function changeCity(){
+            //清空上次的选项
+            city.options.length=0;
+            //获取省一级的下拉列表选中的索引
+            var index=province.selectedIndex;
+       //     alert(index);
+            for(var i=0;i<arr_city[index].length;i++){
+                city.options[i]=arr_city[index][i];
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        /*基于准备好的dom，初始化echarts实例*/
+        var myChart = echarts.init(document.getElementById('main'));
+
+        /*指定图表的配置和数据*/
+var dataAxis = [{foreach name="s" item="data1"}
+                "{$data1['time']}",
+                {/foreach}];
+var data = [{foreach name="s" item="data1"}
+                "{$data1['qq']}",
+                {/foreach}];
+var yMax = 500;
+var dataShadow = [];
+
+for (var i = 0; i < data.length; i++) {
+    dataShadow.push(yMax);
+}
+
+option = {
+    title: {
+        text: ' 各{$data['one']}{$data['two']}的垃圾{$data['shuju']}情况'
+        //,
+  //      subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
+    },
+    xAxis: {
+        data: dataAxis,
+        axisLabel: {
+            inside: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        z: 10
+    },
+    yAxis: {
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#999'
+            }
+        }
+    },
+    dataZoom: [
+        {
+            type: 'inside'
+        }
+    ],
+    series: [
+        { // For shadow
+            type: 'bar',
+            itemStyle: {
+                normal: {color: 'rgba(0,0,0,0.05)'}
+            },
+            barGap:'-100%',
+            barCategoryGap:'40%',
+            data: dataShadow,
+            animation: false
+        },
+        {
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#83bff6'},
+                            {offset: 0.5, color: '#188df0'},
+                            {offset: 1, color: '#188df0'}
+                        ]
+                    )
+                },
+                emphasis: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#2378f7'},
+                            {offset: 0.7, color: '#2378f7'},
+                            {offset: 1, color: '#83bff6'}
+                        ]
+                    )
+                }
+            },
+            data: data
+        }
+    ]
+};
+
+// Enable data zoom when user click bar.
+var zoomSize = 6;
+myChart.on('click', function (params) {
+    console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+    myChart.dispatchAction({
+        type: 'dataZoom',
+        startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+        endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+    });
+});
+
+        // 使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+
+
+
+        var myChart = echarts.init(document.getElementById('main1'));
+
+
+
+
+
+option = {
+    xAxis: {
+        type: 'category',
+        data: [{foreach name="s" item="data1"}
+                "{$data1['time']}",
+                {/foreach}]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+            data:[
+
+                 {foreach name="s" item="data1"}
+                    {value:{$data1['qq']}, name:"{$data1['time']}",},
+                {/foreach}
+            ],
+        type: 'line'
+    }]
+};
+
+
+
+
+
+
+
+        myChart.setOption(option);
+
+
+         
+    </script>
+
+
+
+
+</body>
+</html>

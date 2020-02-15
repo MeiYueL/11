@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+    <title>商品详情</title>
+</head>
+<body>
+<script>
+    function cart()
+    {
+        document.cartbuy.action="{:Url('index/maint/cart')}";
+        document.cartbuy.submit();
+    }
+    function buy() 
+    {
+        document.cartbuy.action = "{:Url('index/maint/buy')}";
+        document.cartbuy.submit();
+    }
+    function show()
+    {
+        var number = document.getElementById("number").value;//显示文本的对象
+        var c = parseInt(number)+parseInt('1'); //parseInt() 将字符串转换为数字
+         document.getElementById("number").value=c;
+    }
+   function show1()
+    {
+        var number = document.getElementById("number").value;//显示文本的对象
+        var c = parseInt(number)-parseInt('1'); //parseInt() 将字符串转换为数字
+        if(c=='0')
+        {
+            alert('已为1');
+        }
+        else
+        {
+         document.getElementById("number").value=c;
+        }
+      //  }
+    }
+</script>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content">
+                <div class="container">
+                    <div id="main">
+                        <div class="row">
+                            <div class="span9">
+                                {foreach name="product" item="data1"}
+                                <h1 class="page-header">{$data1['product_name']}</h1>
+
+                                <div class="carousel property">
+                                    <div class="preview">
+                                        <img src="__PIC__{$data1['product_pic_url']}"style="width:800px;height:500px;" alt="">
+                                    </div><!-- /.preview -->
+
+
+                                </div>
+                                <!-- /.carousel -->
+
+                                <div class="property-detail">
+                                    
+
+                                    <p><strong> {$data1['product_infor']}</strong> </p>
+                                </div>
+                            </div>
+                            <div class="sidebar span3">
+                                <div class="widget contact">
+                                    <h2>编辑信息</h2>
+                                    <div class="content" style="height: 200px;">
+                                        <form method="post" name="cartbuy" action="">
+                                            <div class="pull-left overview">
+                                                <div class="row">
+                                                    <div class="span3">
+                                                        <table>
+                                                            <tr>
+                                                                <th>价格:</th>
+                                                                <td>{$data1['product_price']}（￥/积分）</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>发货地：</th>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>月销量：</th>
+                                                                <td>Condo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>数量：</th>
+                                                                <td>
+                                                                <input type="button" onClick="show1()">
+                                                                    <input type="text" name="number" id="number" style="width: 50px;" value=1>
+                                                                    <input type="hidden"  name="product_id" value="{$data1['product_id']}">
+                                                                    <input type="hidden"  name="product_price" value="{$data1['product_price']}">
+                                                                 <input type="button" onClick="show()">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div><!-- /.row -->
+                                                <div class="form-actions" style=" margin-top: 20px;">
+                                                    <button class="btn btn-primary" onclick="cart()"/>加入购物车</button>
+                                                    <button class="btn btn-primary" onclick="buy()"/>购买</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div><!-- /.content -->
+                                </div><!-- /.widget -->
+                                {/foreach}
+                                <div class="widget our-agents">
+                                    <div class="title">
+                                        <h2>最新商品</h2>
+                                    </div><!-- /.title -->
+                                    {foreach name="product1" item="data1"}
+                                    <div class="content">
+                                        <div class="agent">
+                                            <div class="image">
+                                                <a href="../maint/goods_detail.html"></a>
+                                                <img src="__PIC__{$data1['product_pic_url']}" alt="">
+                                            </div><!-- /.image -->
+
+                                            <div class="name">{$data1['product_name']}</div><!-- /.name -->
+                                            <div class="phone">销量：</div><!-- /.phone -->
+                                            <div class="email"><font color="red">{$data1['product_price']}</font></div><!-- /.email -->
+                                        </div><!-- /.property -->
+                                                {/foreach}
+                                    </div><!-- /.content -->
+                                </div><!-- /.properties -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /#content -->
+        </div><!-- /#wrapper-inner -->
+    {include file="index@footer" /}<!-- /#footer-wrapper -->
+    </div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+</body>
+</html>

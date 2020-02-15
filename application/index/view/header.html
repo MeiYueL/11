@@ -1,0 +1,151 @@
+<div class="breadcrumb-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <ul class="breadcrumb pull-left">
+                                <li><a href="{:Url('index/index/index')}">首页</a></li>
+                            </ul><!-- /.breadcrumb -->
+
+                            <div class="account pull-right">
+    {notempty name="$Request.session.username"}
+
+     {if condition="($Request.session.type=='普通用户')"}
+ <img src="__PIC__{$url['user_touxiang']}" style="width:25px; height:25px; border-radius:50%; " alt="">
+
+        {/if}
+
+
+
+    <a href="{:Url('index/index/person',['id' => $Request.session.username])}">
+    欢迎您：{$Request.session.username}
+     </a>
+
+    <a href="{:Url('index/login/logout')}">退出</a>
+    {/notempty}
+    
+    {empty name="$Request.session.username"}
+
+                                <ul class="nav nav-pills">
+                                    <li><a href="{:Url('index/login/login')}">登录</a></li>
+                                    <li><a href="{:Url('index/login/register')}">注册</a></li>
+                                </ul>
+                      
+    {/empty}
+
+
+
+    
+   </div>
+
+
+                        </div><!-- /.span12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.breadcrumb-wrapper -->
+
+            <!-- HEADER -->
+            <div id="header-wrapper">
+                <div id="header">
+                    <div id="header-inner">
+                        <div class="container">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <div class="row">
+                                        <div class="logo-wrapper span4">
+                                            <a href="#nav" class="hidden-desktop" id="btn-nav">Toggle navigation</a>
+
+                                            <div class="logo">
+                                                <a href="../index/index.html" title="Home">
+                                                    <img src="__IMG__/logo.png" alt="Home">
+                                                </a>
+                                            </div><!-- /.logo -->
+
+                                            <div class="site-name">
+                                                <a href="/" title="Home" class="brand">绿驿</a>
+                                            </div><!-- /.site-name -->
+
+                                            <div class="site-slogan">
+                                                <span>Green<br> Station</span>
+                                            </div><!-- /.site-slogan -->
+                                        </div><!-- /.logo-wrapper -->
+
+                                        <div class="info">
+                                            <div class="site-email">
+                                                <a>@163.com</a>
+                                            </div><!-- /.site-email -->
+
+                                            <div class="site-phone">
+                                                <span>333-666-777</span>
+                                            </div><!-- /.site-phone -->
+                                        </div><!-- /.info -->
+
+                                        <a class="btn btn-primary btn-large list-your-property arrow-right" href="{:Url('index/index/feedback')}">反馈</a>
+                                    </div><!-- /.row -->
+                                </div><!-- /.navbar-inner -->
+                            </div><!-- /.navbar -->
+                        </div><!-- /.container -->
+                    </div><!-- /#header-inner -->
+                </div><!-- /#header -->
+            </div><!-- /#header-wrapper -->
+
+            <!-- NAVIGATION -->
+            <div id="navigation">
+                <div class="container">
+                    <div class="navigation-wrapper">
+                        <div class="navigation clearfix-normal">
+
+                            <ul class="nav">
+                                <li>
+                                    <a href="{:Url('index/index/index')}">首页</a>
+                                    <!-- <span class="menuparent nolink">首页</span> -->
+                                </li>
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">资讯</span>
+                                    <ul>
+                                        <li><a href="{:Url('index/index/news',['class' => 1])}">政策新闻</a></li>
+                                        <li><a href="{:Url('index/index/news',['class' => 2])}">热点报道</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">垃圾分类</span>
+                                    <ul>
+                                        <li><a href="{:Url('index/index/litter')}">知识拓展</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">商城</span>
+                                    <ul>
+                                        <li><a href="{:Url('index/index/goods',['class' => 1])}">生活用品</a></li>
+                                        <li><a href="{:Url('index/index/goods',['class' => 2])}">手工制品</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">关于我们</span>
+                                    <ul>
+                                        <li><a href="{:Url('index/index/about_us')}">关于我们</a></li>
+                                        <li><a href="{:Url('index/index/contact_us')}">联系我们</a></li>
+                                        <li><a href="{:Url('index/index/feedback')}">反馈</a></li>
+                                    </ul>
+                                </li>
+                            </ul><!-- /.nav -->
+
+                            <!-- <div class="language-switcher">
+                                <div class="current en"><a title="按什么查找" href="/" lang="en">垃圾</a></div>
+                                <div class="options">
+                                    <ul>
+                                        <li class="fr"><a href="#">资讯</a></li>
+                                        <li class="de"><a href="#">用户</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+
+                            <form method="post" class="site-search" action="{:Url('index/index/searchgoods')}">
+                                <div class="input-append">
+                                    <input title="请输入您要查找的信息" class="search-query span2 form-text" placeholder="Search" type="text" name="search">
+                                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                                </div><!-- /.input-append -->
+                            </form><!-- /.site-search -->
+                        </div><!-- /.navigation -->
+                    </div><!-- /.navigation-wrapper -->
+                </div><!-- /.container -->
+            </div><!-- /.navigation -->

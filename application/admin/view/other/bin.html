@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>垃圾箱信息管理</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6" style="flex:0 0 100%;max-width: 100%;">
+                    <div class="card">
+                        <div class="card-header bg-light" style="">
+                            垃圾箱信息管理
+                            <button class="btn btn-warning" style="margin-left: 80%;">发送警告</button>
+                            <button class="btn btn-link" style="margin-left: 5;">刷新</button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>垃圾箱编码</th>
+                                        <th>垃圾箱类型</th>
+                                        <th>垃圾箱出产时间</th>
+                                        <th>垃圾箱位置</th>
+                                        <th>垃圾箱状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                             <input type="hidden"  name="danjia" id="danjia" value="{$s=0}">
+                                                                       
+                                        {foreach name="bin" item="data1"}
+
+                                    <tr>
+                                        <td>{$data1['bin_id']} </td>
+                                        <td class="text-nowrap">{$data1['bin_core']} </td>
+                                        <td>{$data1['bin_class']}</td>
+                                        <td>{$data1['bin_indate']}</td>
+                                        <td>{$data1['bin_address']}</td>
+                                        
+
+                                       {eq name="bin11[$s]" value="0"}
+                                        <td><input type="radio" name="" checked  disabled>    </td>
+                                       {else/}
+                                       <td><input type="radio" name=""  disabled>    </td>
+                                       {/eq}
+                                         <input type="hidden"  name="danjia" id="danjia" value="{$s=$s+1}">
+                                        
+                                    </tr>
+                                    
+                                       {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+</body>
+</html>

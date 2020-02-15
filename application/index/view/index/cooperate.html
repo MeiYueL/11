@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>和我们合作</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content">
+                <div class="container">
+        <div id="main">
+            <div class="row">
+                <div class="span9">
+                        <h2>请填写您机构的资料</h2>
+
+                        <form method="post" class="contact-form" action="{:Url('index/index/cooperate')}">
+                            <div class="name control-group">
+                                <label class="control-label" for="inputContactName">
+                                    机构名称（全称）
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="text" id="inputContactName" name="name">
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                            <div class="email control-group">
+                                <label class="control-label" for="inputContactEmail">
+                                    联系电话
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <input type="text" id="inputContactName" name="tel">
+                            </div><!-- /.control-group -->
+                            <div class="control-group">
+                                <label class="control-label" for="inputContactName">
+                                    E-mail
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+                                <div class="controls">
+                                    <input type="text" id="inputContactName" name="email">
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                            <div class="control-group">
+                                <label class="control-label" for="inputContactMessage" >
+                                    Message
+                                    <span class="form-required" title="This field is required.">*</span>
+                                </label>
+
+                                <div class="controls">
+                                    <textarea id="inputContactMessage" name="content"></textarea>
+                                </div><!-- /.controls -->
+                            </div><!-- /.control-group -->
+
+                            <div class="form-actions">
+                                <input type="submit" class="btn btn-primary arrow-right" value="发送">
+                            </div><!-- /.form-actions -->
+                        </form>
+                </div>
+
+                <div class="sidebar span3">
+                    <div class="widget properties last">
+</div><!-- /.properties -->
+                    <div class="ad widget">
+    <h2>广告</h2>
+    <div class="content">
+        <a href="#"><img src="__IMG__/banner/1.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/2.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/3.jpg" alt="Banner"></a>
+        <a href="#"><img src="__IMG__/banner/4.jpg" alt="Banner"></a>
+    </div><!-- /.content -->
+</div><!-- /.ad -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+</body>
+</html>

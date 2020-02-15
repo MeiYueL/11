@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+        <style>
+        table{
+            width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid silver;
+            line-height: 40px;
+            text-align: center;
+        }
+        .btnl,.btnr{
+            border-style: none;
+            outline: none;
+            color: deeppink;
+        }
+        .txt{
+            width: 30px;
+            height: 30px;
+            border-style: none;
+            outline: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="index@header_person" /}    
+
+    <div class="main-container">
+        {include file="index@left_person" /}
+            
+        <div class="content">
+            {if condition="($data == 32)"}
+                {include file="index@index/person_setting" /}
+            {elseif condition="($data == 33)" /}
+                {include file="index@index/person_drop" /}
+            {elseif condition="($data == 34)" /}
+                {include file="index@index/person_cart" /}
+            {elseif condition="($data == 35)" /}
+                {include file="index@index/person_order" /}
+            {elseif condition="($data == 36)" /}
+                {include file="index@index/person_drop" /}
+            {elseif condition="($data == 37)" /}
+                {include file="index@index/person_re" /}
+            {/if}
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+<script>
+    //获取左右的按钮集合
+    var btnleft=document.getElementsByClassName("btnl");
+    var btnright=document.getElementsByClassName("btnr");
+    //获取表示数量的class名为txt的input元素集合
+    var txt=document.getElementsByClassName("txt");
+    //获取表示单价的class名为price的span元素集合
+    var price=document.getElementsByClassName("price");
+    //获取表示小计的class名为smallprice的span元素集合
+    var small=document.getElementsByClassName("smallprice");
+    //获取表示总价的class名为totle的span元素
+    var totle=document.getElementsByClassName("totle")[0];
+    //获取全选反选按钮和选择框
+    var btna=document.getElementById("btna");
+    var btnf=document.getElementById("btnf");
+    var box=document.getElementsByClassName("ckbox");
+    //获取删除按钮
+    var btndelete=document.getElementsByClassName("btndelete");
+    var trlist=document.getElementsByClassName("trinfo");
+ 
+    var totleprice=0;   //定义全局变量totleprice的初值为0
+    //给数量左右两边的+-添加点击事件
+    for(var i=0;i<btnleft.length;i++)
+    {
+        btnleft[i].index=i;    //把i的值赋给btnleft[i]的index
+        btnleft[i].onclick=function (){
+            //获取当前对应的文本框的值
+            var val=txt[this.index].value;
+            val--;
+            //控制其数量的值不能小于1
+            if(val<=1)
+            {
+                val=1;
+            }
+            txt[this.index].value=val;  //把更新了的val值再赋给txt[this.index].value
+            addprice(this.index);    //调用一下addprice()使其在当前变化下执行
+        }
+        btnright[i].index=i;    //把i的值赋给btnright[i]的index
+        btnright[i].onclick=function (){
+            var val=txt[this.index].value;
+            val++;
+            txt[this.index].value=val;
+            addprice(this.index);
+        }
+        //给checkbox添加点击事件
+        box[i].onclick=function (){
+            showtotleprice();
+        }
+        //给删除添加点击事件
+        btndelete[i].index=i;
+        btndelete[i].onclick=function (){
+            totleprice-=parseFloat(small[this.index].innerText);    //将总计里面对应的价格也减掉
+            totle.innerText=totleprice;
+            trlist[this.index].remove();     //去掉对应的那一行元素
+            //重新更新索引  防止其他操作出错
+            for(var k=0;k<trlist.length;k++)
+            {
+                trlist[k].index=k;
+                btndelete[k].index=k;
+                btnleft[k].index=k;
+                btnright[k].index=k;
+            }
+        }
+    }
+    //计算小计
+    function addprice(index){
+        small[index].innerText=(price[index].innerText*txt[index].value);
+    }
+    //计算总计
+    function showtotleprice(){
+        totleprice=0;
+        for(var i=0;i<small.length;i++)
+        {
+            if(box[i].checked)
+            {
+                totleprice+=parseFloat(small[i].innerText);
+            }
+        }
+        totle.innerText=totleprice;
+    }
+    //全选
+    btna.onclick=function (){
+        for(var i=0;i<box.length;i++)
+        {
+            box[i].checked=true;
+        }
+        showtotleprice();
+    }
+    //反选
+    btnf.onclick=function (){
+        for(var i=0;i<box.length;i++)
+        {
+            box[i].checked=!box[i].checked;
+        }
+        showtotleprice();
+    }
+</script>
+<script language="JavaScript">
+   function YYYYMMDDstart()   
+   {   
+           MonHead = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];   
+    
+           //先给年下拉框赋内容   
+           var y  = new Date().getFullYear();   
+           for (var i = (y-30); i < (y+30); i++) //以今年为准，前30年，后30年   
+                   document.reg_testdate.YYYY.options.add(new Option(" "+ i +" 年", i));   
+    
+           //赋月份的下拉框   
+           for (var i = 1; i < 13; i++)   
+                   document.reg_testdate.MM.options.add(new Option(" " + i + " 月", i));   
+    
+           document.reg_testdate.YYYY.value = y;   
+           document.reg_testdate.MM.value = new Date().getMonth() + 1;   
+           var n = MonHead[new Date().getMonth()];   
+           if (new Date().getMonth() ==1 && IsPinYear(YYYYvalue)) n++;   
+                writeDay(n); //赋日期下拉框Author:meizz   
+           document.reg_testdate.DD.value = new Date().getDate();   
+
+
+           document.reg_testdate.YYYY.value = {$bir['y']}; 
+            document.reg_testdate.MM.value ={$bir['m']};
+            document.reg_testdate.DD.value =   {$bir['d']};
+   }   
+   if(document.attachEvent)   
+       window.attachEvent("onload", YYYYMMDDstart);   
+   else   
+       window.addEventListener('load', YYYYMMDDstart, false);   
+   function YYYYDD(str) //年发生变化时日期发生变化(主要是判断闰平年)   
+   {   
+           var MMvalue = document.reg_testdate.MM.options[document.reg_testdate.MM.selectedIndex].value;   
+           if (MMvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
+           var n = MonHead[MMvalue - 1];   
+           if (MMvalue ==2 && IsPinYear(str)) n++;   
+                writeDay(n)   
+   }   
+   function MMDD(str)   //月发生变化时日期联动   
+   {   
+        var YYYYvalue = document.reg_testdate.YYYY.options[document.reg_testdate.YYYY.selectedIndex].value;   
+        if (YYYYvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
+        var n = MonHead[str - 1];   
+        if (str ==2 && IsPinYear(YYYYvalue)) n++;   
+       writeDay(n)   
+   }   
+   function writeDay(n)   //据条件写日期的下拉框   
+   {   
+           var e = document.reg_testdate.DD; optionsClear(e);   
+           for (var i=1; i<(n+1); i++)   
+                e.options.add(new Option(" "+ i + " 日", i));   
+   }   
+   function IsPinYear(year)//判断是否闰平年   
+   {     return(0 == year%4 && (year%100 !=0 || year%400 == 0));}   
+   function optionsClear(e)   
+   {   
+        e.options.length = 1;   
+   }   
+</script>
+<script type="text/javascript">
+    $("input[name='image_url']").change(function(){
+        $(".img").attr("src",URL.createObjectURL($(this)[0].files[0]));
+    });
+</script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script "text/javascript">
+
+  $('#type').click(function(){
+            $(this).change(function(){
+                var objectModel = {};
+                var   value = $(this).val();
+              //  alert(value);
+               var   type = $(this).attr('id');
+              // alert(type);
+              //  objectModel[type] =value;
+                $.ajax({
+              //      cache:false,
+                    type:"POST",
+                    url:'person_setperson',
+                    dataType:"json",
+                    data:{"value":value
+                    },
+                    timeout:30000,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    },
+                    success:function(data)
+                    {
+                        alert('12');
+                    //  alert(data[0]);
+                    //
+                    //  alert(data[1]);
+                        $("#lables").empty();
+                        var count = data.length;
+                        var i = 0;
+                        var b="";
+                           for(i=0;i<count;i++)
+                           {
+                               b+="<option value="+data[i].id+">"+data[i].name+"</option>";
+                           }
+                        $("#lables").append(b);
+
+                         
+                    }
+                });
+               });
+        }
+    );
+
+   $('#lables').click(function()
+   {
+            $(this).change(function()
+            {
+
+                var   value = $(this).val();
+                      $("#lables2").empty();
+                    var b="";
+                    var c="";
+                     b="<option value="+'0'+">"+'无'+"</option>";
+                     $("#lables2").append(b);
+
+                    c=$("#type  option:selected").text();
+
+                
+                $.ajax({
+              //      cache:false,
+                    type:"POST",
+                    url:'kankan1',
+                    dataType:"json",
+                    data:{"value":value
+                    },
+                    timeout:30000,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    },
+                    success:function(data)
+                    {
+                        //if(data[0]!='undefined')
+                        //{
+                        if(c!='北京市' &&  c!='天津市'  &&  c!='内蒙古自治区'  &&  c!='上海市')
+                        {
+                        $("#lables2").empty();
+                        var count = data.length;
+                        var i = 0;
+                        var b="";
+                           for(i=0;i<count;i++)
+                           {
+                               b+="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+                           }
+                        $("#lables2").append(b);
+                        }
+                    //  }
+                    }
+                });
+               });
+        }
+    );
+</script>
+</body>
+</html>

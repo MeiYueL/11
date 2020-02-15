@@ -1,0 +1,45 @@
+<div class="row">
+                <div class="col-md-6" style="flex:0 0 100%;max-width: 100%;">
+                    <div class="card">
+                        <div class="card-header bg-light" style="">
+                            购物车
+                        </div>
+                                            <form method="post" action="{:Url('index/maint/cart_submit')}">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" >
+                                    <thead>
+                                    <tr>
+                                        <td>选择 </td>
+                                        <td colspan="2">商品信息</td>
+                                        <td>单价</td>
+                                        <td>数量</td>
+                                        <td>金额</td>
+                                        <td>操作</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                                                   {foreach name="cart" item="data1" key="k"}
+                                    <tr>
+        <td>
+<input class="ckbox"type="checkbox" name="teachers[]" value={$data1['cart_id']} id={$data1['cart_id']} /> 
+</td>
+<td width=25% height=200><img style="width:300px;height:200px;" src="__PIC__{$data1['product_pic_url']}" width="200" alt=""></td>
+        <td>{$data1['product_name']}</td>
+        <td><span class="price">{$data1['product_price']}</span>￥</td>
+        <td><button class="btnl" type="button">-</button><input type="text" class="txt" value="{$data1['product_amount']}"/><button class="btnr" type="button">+</button></td>
+        <td><span class="smallprice">{$data1['product_amount']*$data1['product_price']}</span>￥</td>
+        <td><a  class="btn btn-outline-info"  href="{:Url('index/index/cart_delete',['id' => $data1['cart_id']])}" >删除</a></td>
+                                    </tr>
+                                                               {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                        <div style="width:100%; text-align: right;margin-top: 20px;">
+<button type="submit" class="btn btn-primary" >结算</button>
+                                                    </form>
+                        </div>
+                </div>
+            </div>

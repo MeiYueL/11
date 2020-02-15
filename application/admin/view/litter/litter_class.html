@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>垃圾信息管理</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6" style="flex:0 0 100%;max-width: 100%;">
+                    <div class="card">
+                        <div class="card-header bg-light" style="">
+                            垃圾类别信息管理
+                    <a class="btn btn-secondary" style="margin-left: 80%;" href="{:Url('admin/litter/litterclass_add')}">增加</a>
+                           
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>父类别ID</th>
+                                        <th>垃圾分类名</th>
+                                        <th>垃圾分类危害</th>
+                                        <th>垃圾分类简介</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {foreach name="litterclass" item="data1"}
+                                    <tr>
+                                        <td>{$data1['litter_class_id']}</td>
+                                        <td class="text-nowrap"><a href=#>{$data1['litter_class_pid']}</a></td>
+                                        <td>{$data1['litter_class_name']}</td>
+                                        <td>{$data1['litter_class_damage']}</td>
+                                        <td>{$data1['litter_class_info']}</td>
+                                        <td>
+
+                                          <a href="{:Url('admin/litter/litterclass_update',['id' => $data1['litter_class_id']])}" >修改</a> 
+                                          <a href="{:Url('admin/litter/litter_delete',['id' => $data1['litter_class_id']])}" >删除</a>
+
+                                     
+                                        </td>
+                                    </tr>
+                                         {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+</body>
+</html>

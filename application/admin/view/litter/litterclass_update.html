@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改垃圾类别</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                修改垃圾类别
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row mb-5">
+                                    
+
+
+
+                    <form method="post"  action="{:Url('admin/litter/litterclass_updatecheck')}">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">垃圾类别名称：</label>
+                                                    <input class="form-control" name="littercategoryname" value="{$content[0]['litter_class_name']}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">垃圾类别危害：</label>
+                                                    <input class="form-control" value=" {$content[0]['litter_class_damage']}" name="littercategorydamage">
+
+                                            <input type="hidden"   name="id" value="{$content[0]['litter_class_id']}">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">父类别：</label>
+
+
+
+                                                    <select name="litterclass" >
+    {foreach name="litterclassname" item="data1"}
+     {if condition="($data1['litter_class_pid']==$content[0]['litter_class_pid'])"}
+<option value={$data1['litter_class_pid']} selected>{$data1['litter_class_name1']}</option>
+{else/}
+<option value={$data1['litter_class_pid']} >{$data1['litter_class_name1']}</option>
+        {/if}
+                                                    {/foreach}
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">垃圾类别简述：</label>
+                                                    <textarea  rows="5"  name="littercategoryinfo">{$content[0]['litter_class_info']}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+</form>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+</body>
+</html>

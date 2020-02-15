@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>增加新的新闻</title>
+    <link rel="stylesheet" href="__LIBRARIES__/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="__LIBRARIES__/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="__CSS__/styles.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    {include file="admin@header" /}    
+
+    <div class="main-container">
+        {include file="admin@left" /}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                增加新的新闻
+                            </div>
+<form method="post"  enctype="multipart/form-data" action="{:Url('admin/article/article_updatecheck')}">
+                            <div class="card-body">
+                                <div class="row mb-5">
+                                    
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">新闻标题：</label>
+                                                    <input class="form-control" name="newtitle" value="{$article['article_name']}">
+
+                                        <input type="hidden"   name="id" value="{$article['article_id']}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                        新闻封面：<input type="file" name="image_url" /> <br><br>
+                                        <img src="__PIC__{$article['article_pic_url']}" class="img" width="300">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label"></label>
+                                                    <img src="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">出处：</label>
+<select name="type1" size="1" id="type" style="width: 100px;">
+     {foreach name='jilian' item='v'}
+
+     {if condition="($v['name']==$article['article_from'])"}
+
+         <option value="{$v['name']}" selected>{$v.name}</option>
+         {else/}
+ <option value="{$v['name']}" >{$v.name}</option>
+        {/if}
+     {/foreach}
+ </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">类别：</label>
+ <select name="lables" size="1" id="lables" style="width: 100px;">
+
+     {foreach name='chuchu' item='v'}
+
+     {if condition="($v['article_class_id']==$article['article_class_id'])"}
+
+         <option value="{$v['article_class_id']}" selected>{$v.article_class_name}</option>
+         {else/}
+ <option value="{$v['article_class_id']}" >{$v.article_class_name}</option>
+        {/if}
+     {/foreach}
+ </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">新闻详情：</label>
+                                <script id="container" name="content" type="text/plain">
+{$article['article_content']}
+                                </script>  
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:200px;margin-top:10px;">
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__LIBRARIES__/jquery/jquery.min.js"></script>
+<script src="__LIBRARIES__/popper.js/popper.min.js"></script>
+<script src="__LIBRARIES__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__LIBRARIES__/chart.js/chart.min.js"></script>
+<script src="__JS__/carbon.js"></script>
+<script src="__JS__/demo.js"></script>
+<script src="__ueditor__/ueditor.config.js"></script>
+<script src="__ueditor__/ueditor.all.js"></script>
+<script type="text/javascript">
+  var editor = UE.getEditor('container');
+    $("input[name='image_url']").change(function(){
+        $(".img").attr("src",URL.createObjectURL($(this)[0].files[0]));
+    });
+</script>
+</body>
+</html>

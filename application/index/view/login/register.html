@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/png">
+    <link rel="stylesheet" href="__CSS__/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="__LIBRARIES__/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="__CSS__/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+
+    <title>注册</title>
+</head>
+<body>
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            {include file="index@header" /}
+            <!-- CONTENT -->
+            <div id="content">
+<div class="container">
+    <div>
+        <div id="main">
+            <div class="login-register">
+<div class="row">
+<div class="span4">
+    <ul class="tabs nav nav-tabs">
+        <li class="active"><a href="#register">Register</a></li>
+    </ul>
+    <!-- /.nav -->
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="register">
+
+                    <form method="post" action="{:url('login/registeradd')}">
+                        <div class="control-group">
+                            <label class="control-label" for="inputRegisterFirstName">
+                                用户名
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" id="inputRegisterFirstName" name="username" required="true">
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputRegisterFirstName">
+                                密码
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <input type="password" id="inputRegisterFirstName" name="userpswd" required="true">
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+
+
+
+                        <!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputRegisterSurname">
+                                真实姓名
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" id="inputRegisterSurname"  name="truename" required="true">
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputRegisterEmail">
+                                手机号码
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <input type="text" id="inputRegisterEmail" name="phonenumber" pattern="^1[0-9]{10}$" required
+                    oninvalid="this.setCustomValidity('请输入正确的手机号码');"
+                    oninput="setCustomValidity('')">
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputRegisterPassword">
+                                居住地址
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+ <div class="controls">
+<select name="type1" size="1" id="type" style="width: 100px;">
+    <option>省</option>
+     {foreach name='jilian' item='v'}
+         <option value="{$v['id']}">{$v.name}</option>
+     {/foreach}
+ </select>
+ <select name="lables" size="1" id="lables" style="width: 100px;">
+ <option>市</option>
+ </select>
+
+  <select name="lables2" size="1" id="lables2" style="width: 100px;">
+   <option>区</option>
+ </select>
+                                 <input type="text" style="width: 30%;"  name="address" value="社区"><input type="text"  name="address" value="详细地址"style="width: 70%;">
+    </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputRegisterRetype">
+                                类型
+                                <span class="form-required" title="This field is required.">*</span>
+                            </label>
+
+                            <div class="controls">
+                                <select  name='sort' id="inputSortBy">
+                                    <option id="">普通用户</option>
+                                    <option id="">社区管理员</option>
+                                    <option id="">回收人员</option>
+                                    <option id="">政府</option>
+                                </select>
+
+                </select>
+                            </div>
+                            <!-- /.controls -->
+                        </div>
+                        <!-- /.control-group -->
+
+                        <div class="form-actions">
+                            <input type="submit" value="注册" class="btn btn-primary arrow-right">
+                            <a href="{:Url('index/login/login')}" title="">已有账号？</a>
+                        </div>
+                        <!-- /.form-actions -->
+                    </form>
+                    
+                </div>
+        <!-- /.tab-pane -->
+    </div>
+    <!-- /.tab-content -->
+</div>
+<!-- /.span4-->
+<div class="span8" style="background-image: url('__IMG__/login/register.jpg');height: 605px;margin-top: 20px;">
+</div>
+
+</div>
+</div>
+<!-- /.row -->
+</div><!-- /.login-register -->        </div>
+    </div>
+</div>
+
+    </div><!-- /#content -->
+</div><!-- /#wrapper-inner -->
+
+{include file="index@footer" /}<!-- /#footer-wrapper -->
+</div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<div class="palette">
+    <div class="toggle">
+        <a href="#">Toggle</a>
+    </div><!-- /.toggle -->
+
+    <div class="inner">
+        <div class="headers">
+            <h2>Header styles</h2>
+            <ul>
+                <li><a class="header-light">Light</a></li>
+                <li><a class="header-normal">Normal</a></li>
+                <li><a class="header-dark">Dark</a></li>
+            </ul>
+        </div><!-- /.headers -->
+    </div><!-- /.inner -->
+</div><!-- /.palette -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.ezmark.js"></script>
+<script type="text/javascript" src="__JS__/jquery.currency.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/retina.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/carousel.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.min.js"></script>
+<script type="text/javascript" src="__JS__/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="__LIBRARIES__/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="__JS__/realia.js"></script>
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script "text/javascript">
+
+  $('#type').click(function(){
+            $(this).change(function(){
+                var objectModel = {};
+                var   value = $(this).val();
+              //  alert(value);
+               var   type = $(this).attr('id');
+              // alert(type);
+              //  objectModel[type] =value;
+                $.ajax({
+              //      cache:false,
+                    type:"POST",
+                    url:'register',
+                    dataType:"json",
+                    data:{"value":value
+                    },
+                    timeout:30000,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    },
+                    success:function(data)
+                    {
+                        //alert('12');
+                    //  alert(data[0]);
+                    //
+                    //  alert(data[1]);
+                        $("#lables").empty();
+                        var count = data.length;
+                        var i = 0;
+                        var b="";
+                           for(i=0;i<count;i++)
+                           {
+                               b+="<option value="+data[i].id+">"+data[i].name+"</option>";
+                           }
+                        $("#lables").append(b);
+
+                         
+                    }
+                });
+               });
+        }
+    );
+
+   $('#lables').click(function()
+   {
+            $(this).change(function()
+            {
+
+                var   value = $(this).val();
+                      $("#lables2").empty();
+                    var b="";
+                    var c="";
+                     b="<option value="+'0'+">"+'无'+"</option>";
+                     $("#lables2").append(b);
+
+                    c=$("#type  option:selected").text();
+                     //   var a=document.getElementById("type1").value;
+                    //  alert(c);
+              /*  if(value=='110000')
+                {
+              //   $("#lables2").empty();
+                    var b="";
+                     b="<option value="+'0'+">"+'无'+"</option>";
+                     $("#lables2").append(b);
+                 }*/
+
+                //alert(value);
+            //   var   type = $(this).attr('id');
+           //    alert(type);
+              //  objectModel[type] =value;
+                
+                $.ajax({
+              //      cache:false,
+                    type:"POST",
+                    url:'kankan1',
+                    dataType:"json",
+                    data:{"value":value
+                    },
+                    timeout:30000,
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    },
+                    success:function(data)
+                    {
+                        //if(data[0]!='undefined')
+                        //{
+                        if(c!='北京市' &&  c!='天津市'  &&  c!='内蒙古自治区'  &&  c!='上海市')
+                        {
+                        $("#lables2").empty();
+                        var count = data.length;
+                        var i = 0;
+                        var b="";
+                           for(i=0;i<count;i++)
+                           {
+                               b+="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+                           }
+                        $("#lables2").append(b);
+                        }
+                    //  }
+                    }
+                });
+               });
+        }
+    );
+</script>
+</body>
+</html>
